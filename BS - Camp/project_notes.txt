@@ -1,0 +1,55 @@
+Design logo.
+Implement the app start animations.
+---->    The above two to be done in last.
+
+Enhance home screen UI (design a figma UI and then strictly follow every cm in code)
+Enhance login screen UI
+Enhance signup screen UI
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+React native basic running app:
+
+npm i
+Npx react-native init qwkdjn
+Npx react-native run-android
+Npc react-native start
+
+
+
+
+
+
+See the redux thing before establishing backend properly for state handling.
+
+Add generative AI bot as well.
+
+Inspiration:  https://dev.co/
+
+# rnf
+
+Destination dropdown...
+Month...
+Year...
+Search button...
+
+
+.Campus TravelMate
+.Carpool
+
+
