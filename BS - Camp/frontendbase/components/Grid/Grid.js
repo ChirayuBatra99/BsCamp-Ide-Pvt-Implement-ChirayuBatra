@@ -6,7 +6,7 @@ import { AppContext } from '../context/AppContext';
 
 const Grid = () => {
   const timeSlots = Array.from({ length: 30 }, (_, i) => i + 1); // 1 to 30
-  const hours = Array.from({ length: 24 }, (_, i) => `${i }:00`); // 1:00 to 24:00
+  const hours = Array.from({ length: 24 }, (_, i) => `${i}:00`); // 1:00 to 24:00
 
   const { selectedMonth } = useContext(AppContext);
 
@@ -17,43 +17,42 @@ const Grid = () => {
     >
 
       {/* Main Grid */}
-        <View style={styles.gridContainer}>
+      <View style={styles.gridContainer}>
 
+        {/* this is the upper date horizontal line */}
+        <View style={styles.datesabove}>
+          {timeSlots.map((e, key) => (
+            <View style={styles.hourLabelsContainer}>
+              <Text key={key} > {e} Jan</Text>
+              <View key={key} style={[styles.line, { left: key * 0 }]} />
+            </View>
+          ))}
+        </View>
 
-           {/* this is the upper date horizontal line */}
-          <View style={styles.datesabove}>
-              {timeSlots.map((e, key) => (
-                <View style={styles.hourLabelsContainer}>
-                  <Text key={key} > {e} Jan</Text>
-                  <View key={key} style={[styles.line, { left: key*0  }]} />
-                </View>
-              ))}
-          </View>
-
-          <ScrollView vertical   >
+        <ScrollView vertical   >
 
           {hours.map((hour, rowIndex) => (
             <View key={rowIndex} style={styles.gridRow}>
               <Text style={styles.lefthour}>{hour.replace(/:00$/, '')} </Text>
               {timeSlots.map((slot, colIndex) => (
                 <View key={colIndex} style={styles.gridCell}>
-                  <Window hour={hour} date={slot} destination={"Ai"} month={selectedMonth} year={selectedMonth==12?"2024":"2025"} />
+                  <Window hour={hour} date={slot} destination={"Ai"} month={selectedMonth} year={selectedMonth == 12 ? "2024" : "2025"} />
                   {/* <Text>{selectedMonth==12?"2024":"2025"}</Text> */}
-                  {slot==1?
-                  ( 
-                  <View style={styles.bottomLine} />
-                   ):
-                  (<View/>)
-                  } 
+                  {slot == 1 ?
+                    (
+                      <View style={styles.bottomLine} />
+                    ) :
+                    (<View />)
+                  }
 
                 </View>
               ))}
             </View>
           ))}
 
-</ScrollView>
+        </ScrollView>
 
-        </View>
+      </View>
 
     </ScrollView>
   );
@@ -113,7 +112,7 @@ const styles = StyleSheet.create({
     width: 25,
     top: -10,
     // backgroundColor: 'green',
- 
+
   }
 });
 
@@ -171,7 +170,7 @@ export default Grid;
 //           ))}
 //         </View>
 //       </ScrollView>
-      
+
 //       <ScrollView vertical>
 //         <View style={styles.gridContainer}>
 //           {Array.from({ length: 25 }, (_, i) => i).map((hour) => (
@@ -185,7 +184,7 @@ export default Grid;
 //                             <Window/>
 //                         ))}
 //                   </View>
-                       
+
 //             </View>
 //           ))}
 
@@ -193,7 +192,7 @@ export default Grid;
 //                             <Window/>
 //                         ))}
 
-        
+
 //         </View>
 //       </ScrollView>
 
@@ -255,7 +254,7 @@ export default Grid;
 
 
 
-   {/* <ScrollView horizontal>
+{/* <ScrollView horizontal>
          <View >
            {timeSlots.map((time) => (
              <View key={time} >
@@ -274,8 +273,8 @@ export default Grid;
        </ScrollView>
        */}
 
-      {/* Left Hour Labels */}
-      {/* <View style={styles.hourLabelsContainer}>
+{/* Left Hour Labels */ }
+{/* <View style={styles.hourLabelsContainer}>
         {hours.map((hour) => (
           <View key={hour} style={styles.hourLabel}>
             <Text>{hour}</Text>
