@@ -14,8 +14,8 @@ export default function ShareFl() {
       <View style={styles.container}>
         <Text style={styles.header}>App Name</Text>
         <AppProvider>
-          {/* <NavigationBar /> */}
-          <DestinationPicker />
+          <NavigationBar />
+          {/* <DestinationPicker /> */}
           <Grid />
         </AppProvider>
       </View>
