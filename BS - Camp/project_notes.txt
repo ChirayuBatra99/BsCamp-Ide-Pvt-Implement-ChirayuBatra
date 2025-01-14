@@ -6,16 +6,22 @@ Enhance home screen UI (design a figma UI and then strictly follow every cm in c
 Enhance login screen UI
 Enhance signup screen UI
 
+Implement audio calling between users.
+
+Previous JDK version was 21.0.2
 
 
 
 
 
+How i build the apk version: (yt Sujan Anand)
 
-
-
-
-
+chirayubatra@Chirayus-MacBook-Air  % keytool -genkey -v -keystore your_key_name.keystore -alias your_key_alias -keyalg RSA -keysize 2048 -validity 10000
+ 272 executed, 25 up-to-date
+chirayubatra@Chirayus-MacBook-Air  % npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle
+chirayubatra@Chirayus-MacBook-Air  % ./gradlew assembleRelease
+cd android
+chirayubatra@Chirayus-MacBook-Air android % ./gradlew assembleRelease
 
 
 
