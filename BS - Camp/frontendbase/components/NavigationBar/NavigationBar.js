@@ -51,7 +51,12 @@ export default function NavigationBar() {
         <Picker.Item label="Rai" value="railway" />
       </Picker>
 
-      <Picker
+
+
+
+
+
+      {/* <Picker
         selectedValue={selectedMonth}
         style={styles.picker}
         onValueChange={(itemValue) => setSelectedMonth(itemValue=="2024-12"?"12":itemValue=="2025-01"?"01":"02")}
@@ -60,9 +65,9 @@ export default function NavigationBar() {
         {months.map((month) => (
           <Picker.Item key={month.value} label={month.label} value={month.value} />
         ))}
-      </Picker>
+      </Picker> */}
 
-      <Button title="Search" onPress={handleSearch} />
+      {/* <Button title="Search" onPress={handleSearch} /> */}
       <Button title='Place Bid' onPress= {() => navigation.navigate("Placebid")}/>
       <Button title='Logout' onPress={handleLogOut} />
     </View>

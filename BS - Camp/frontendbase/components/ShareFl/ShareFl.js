@@ -6,7 +6,11 @@ import NavigationBar from '../NavigationBar/NavigationBar';
 
 import {AppProvider} from '../../components/context/AppContext';
 
-import DestinationPicker from './DestinationPicker';
+import DestinationPicker from './A';
+import DestinationDropDown from './Pickers/DestinationDropDown';
+import PickUpDropDown from './Pickers/PickUpDropDown';
+import MonthPickerDropDown from './Pickers/MonthPickerDropDown';
+
 
 export default function ShareFl() {
   return (
@@ -16,6 +20,9 @@ export default function ShareFl() {
         <AppProvider>
           <NavigationBar />
           {/* <DestinationPicker /> */}
+          {/* <PickUpDropDown /> */}
+          {/* <DestinationDropDown /> */}
+          <MonthPickerDropDown />
           <Grid />
         </AppProvider>
       </View>

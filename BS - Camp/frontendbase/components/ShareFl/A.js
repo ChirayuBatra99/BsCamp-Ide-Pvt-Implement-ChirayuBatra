@@ -21,7 +21,7 @@ const DestinationPicker = () => {
         <RNPickerSelect
           onValueChange={(value) => setStartDestination(value)}
           items={destinations}
-          placeholder={{ label: 'Select Start Destination', value: null }}
+          placeholder={{ label: 'Destination Place', value: null }}
           style={{ inputAndroid: styles.input, inputIOS: styles.input }}
         />
       </View>
