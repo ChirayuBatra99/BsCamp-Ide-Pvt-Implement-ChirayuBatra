@@ -18,7 +18,7 @@ export default function ShareFl() {
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         {/* <Text style={styles.header}>App Name</Text> */}
-        <TopNavigationBar />
+        {/* <TopNavigationBar /> */}
         <AppProvider>
           <NavigationBar />
           {/* <DestinationPicker /> */}
@@ -27,6 +27,7 @@ export default function ShareFl() {
           {/* <MonthPickerDropDown />
           <DestinationDropDown /> */}
           <Grid />
+          
         </AppProvider>
       </View>
     </SafeAreaView>
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
     paddingTop: 20, // Space from the top
     paddingHorizontal: 10,   // Optional: Horizontal padding
   
-
+    
     // flex: 1, // Ensure it takes the full screen height
     // flexDirection: 'column',
     // justifyContent: 'flex-start', // Stack children vertically

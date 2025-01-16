@@ -141,10 +141,31 @@ router.post("/placebid", async(req,res) => {
     }
 })
 
-router.get("/myprofile", authenticate, async (req, res) => {
-    console.log("hi");
-    console.log(req.rootUser.email);
-    res.status(200).json(req.rootUser.email);
+router.post("/myprofile", async (req, res) => {
+    console.log("Hemlo");
+    
+    const {userId} = req.body;
+    if(!userId)
+    {
+        console.log("Bro, there is no userId coming");
+        return res.status(400).json({ error: "userId is required" }); // Fixed
+    }
+    try{
+        const query1 = "SELECT phone FROM users WHERE id=?";
+        db.query(query1, [userId], async(err, result) => {
+            if(err) 
+                return res.status(500).json({error: "Failed to get mob number"});
+            if (result.length == 0)
+                return res.status(422).json({ error: "user not found with this userId" })
+            console.log(result);
+            res.status(201).json({result});
+        })
+    }
+    catch(error) {
+        console.log("Error in catch block", error.message);
+        return res.status(500).json({error: error.message});
+    }
+        
 })
 
 router.post("/changepassword", authenticate, async (req, res) => {

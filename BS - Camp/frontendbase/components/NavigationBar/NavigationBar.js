@@ -1,4 +1,4 @@
-import { View, StyleSheet, Button, Alert } from 'react-native';
+import { View, StyleSheet, Button, Alert, TouchableOpacity, Text } from 'react-native';
 import React, { useState, useContext } from 'react';
 import { Picker } from '@react-native-picker/picker'; // Install this package if not installed: npm install @react-native-picker/picker
 import { useNavigation } from '@react-navigation/native';
@@ -9,6 +9,7 @@ import { AuthContext } from '../../AuthContext';
 import DestinationDropDown from '../ShareFl/Pickers/DestinationDropDown';
 import MonthPickerDropDown from '../ShareFl/Pickers/MonthPickerDropDown';
 import PickUpDropDown from '../ShareFl/Pickers/PickUpDropDown';
+import Newdropdown from '../ShareFl/Pickers/Newdropdown';
 
 export default function NavigationBar() {
   const { selectedMonth, setSelectedMonth } = useContext(AppContext);
@@ -45,9 +46,29 @@ export default function NavigationBar() {
 
   return (
     <View style={styles.container}>
+      {/* <Button title='Logout' onPress={handleLogOut} /> */}
       <PickUpDropDown />
       <DestinationDropDown />
-      <MonthPickerDropDown />
+      {/* <Newdropdown /> */}
+
+      <View style={{display: 'flex', flexDirection: 'row', justifyContent:'center', alignItems:'center'}}>
+        <View style={styles.monthpick}>
+           <MonthPickerDropDown />
+        </View>
+        {/* <View  style={styles.bidbutton}>
+           <Button title='Place Bid' onPress= {() => navigation.navigate("Placebid")}/>
+      </View> */}
+       <TouchableOpacity style={styles.roundButton} onPress={() => navigation.navigate("Placebid")}>
+        <Text style={styles.buttonText}> Place {`\n`} a bid</Text>
+      </TouchableOpacity>
+      </View>
+
+      
+
+
+
+
+      
       {/* <Picker
         selectedValue={destinationType}
         style={styles.picker}
@@ -74,15 +95,38 @@ export default function NavigationBar() {
       </Picker> */}
 
       {/* <Button title="Search" onPress={handleSearch} /> */}
-      <Button title='Place Bid' onPress= {() => navigation.navigate("Placebid")}/>
-      <Button title='Logout' onPress={handleLogOut} />
 
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  // container: {
+  monthpick: {
+    width: 200,
+  },
+  roundButton: {
+    width: 70,
+    height: 70,
+    borderRadius: 50,
+    backgroundColor: 'grey',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.8,
+    shadowRadius: 5,
+    elevation: 10,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+
+});
+
+
+// container: {
   //   flexDirection: "row",
   //   alignItems: "center",
   //   justifyContent: "space-between",
@@ -98,8 +142,6 @@ const styles = StyleSheet.create({
   //   borderColor: "#ccc",
   //   borderRadius: 5,
   // },
-});
-
 
 
 

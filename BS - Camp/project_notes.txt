@@ -26,7 +26,7 @@ chirayubatra@Chirayus-MacBook-Air android % ./gradlew assembleRelease
 
 
 
-
+Trave& SHM to be released togetehr, not just solo Travel thing.
 
 
 React native basic running app:

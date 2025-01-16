@@ -55,13 +55,13 @@ import React, { useState } from 'react';
 
   const styles = StyleSheet.create({
     container: {
-      backgroundColor: 'white',
-      padding: 16,
+      backgroundColor: 'pink',
+      padding: 10,
     },
     dropdown: {
       height: 50,
-      borderColor: 'gray',
-      borderWidth: 0.5,
+      borderColor: 'black',
+      borderWidth: 3,
       borderRadius: 8,
       paddingHorizontal: 8,
     },
@@ -70,7 +70,7 @@ import React, { useState } from 'react';
     },
     label: {
       position: 'absolute',
-      backgroundColor: 'white',
+      backgroundColor: 'pink',
       left: 22,
       top: 8,
       zIndex: 999,

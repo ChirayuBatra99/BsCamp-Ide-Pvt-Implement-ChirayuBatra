@@ -32,7 +32,7 @@ const MonthPickerDropDown = () => {
         if (value || isFocus) {
             return (
                 <Text style={[styles.label, isFocus && { color: 'blue' }]}>
-                    Select month of travel
+                    Travellers in:
                 </Text>
             );
         }
@@ -71,13 +71,13 @@ export default MonthPickerDropDown;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
-        padding: 16,
+        backgroundColor: 'pink',
+        padding: 25,
     },
     dropdown: {
         height: 50,
-        borderColor: 'gray',
-        borderWidth: 0.5,
+        borderColor: 'black',
+        borderWidth: 3,
         borderRadius: 8,
         paddingHorizontal: 8,
     },
@@ -86,15 +86,17 @@ const styles = StyleSheet.create({
     },
     label: {
         position: 'absolute',
-        backgroundColor: 'white',
-        left: 22,
+        backgroundColor: 'pink',
+        color:'black',
+        left: 40,
         top: 8,
         zIndex: 999,
         paddingHorizontal: 8,
-        fontSize: 14,
+        fontSize: 16,
     },
     placeholderStyle: {
         fontSize: 16,
+        marginTop: 12,
     },
     selectedTextStyle: {
         fontSize: 16,

@@ -12,8 +12,8 @@ export default function ShareFl() {
       <View style={styles.container}>
         <Text style={styles.header}>shareFl</Text>
         <AppProvider>
-          <NavigationBar />
-          <Grid />
+          {/* <NavigationBar /> */}
+          {/* <Grid /> */}
         </AppProvider>
       </View>
     </SafeAreaView>
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 0, 
-    marginTop: 20,// Space below the header
+    marginTop: 0,// Space below the header
   },
 });
 

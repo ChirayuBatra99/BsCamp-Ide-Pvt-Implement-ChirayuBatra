@@ -85,6 +85,7 @@ const Grid = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: -30,   // space between the grid and navbar
   },
   rowContainer: {
     flexDirection: 'row',
@@ -128,7 +129,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: 'blue',
+    borderColor: 'black',
   },
   lefthour: {
     fontSize: 14,
