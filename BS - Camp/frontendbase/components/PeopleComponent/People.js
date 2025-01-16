@@ -56,21 +56,7 @@ const People = () => {
                {/* To here */}
 
             
-            {peopleData.map((peep) => (
-                <View key={peep.bid_id} style={styles.card}>
-                    {/* <Image source={{ uri: person.displayPicture }} style={styles.image} /> */} 
-                    <View>
-                        <Text style={styles.name}>{peep.user},Bidid {peep.bid_id}</Text>
-                    
-                        {/* <Text style={styles.phone}>{person.phone}</Text> */}
-                    </View>
-                    <Button
-                        title="Message"
-                        onPress={() => handleMessage(person.name)}
-                        color="#007BFF"
-                    />
-                </View>
-            ))}
+           
 
         </View>
     )
@@ -138,3 +124,26 @@ export default People
 //         />
 //     </View>
 //   ))}
+
+
+
+
+
+
+// Previous list of poeple
+
+// {peopleData.map((peep) => (
+//     <View key={peep.bid_id} style={styles.card}>
+//         {/* <Image source={{ uri: person.displayPicture }} style={styles.image} /> */} 
+//         <View>
+//             <Text style={styles.name}>{peep.user},Bidid {peep.bid_id}</Text>
+        
+//             {/* <Text style={styles.phone}>{person.phone}</Text> */}
+//         </View>
+//         <Button
+//             title="Message"
+//             onPress={() => handleMessage(person.name)}
+//             color="#007BFF"
+//         />
+//     </View>
+// ))}

@@ -42,7 +42,7 @@ const Chat = ({ item }) => {
         <Pressable
             onPress={() =>
                 navigation.navigate('ChatRoom', {
-                    name: item?.user,
+                    name: item?.phone,
                     receiverId: item?.userid,          //    FIX THIS
                 })
             }
@@ -51,7 +51,7 @@ const Chat = ({ item }) => {
             
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                 <View>
-                    <Text style={{ fontSize: 15, fontWeight: '500' }}>{item?.user},{item?.userid}</Text>
+                    <Text style={{ fontSize: 15, fontWeight: '500' }}>{item?.phone},{item?.userid}</Text>
                      {/* <Text style={{ marginTop: 4, color: 'gray' }}>
                         {lastMessage
                             ? lastMessage.message

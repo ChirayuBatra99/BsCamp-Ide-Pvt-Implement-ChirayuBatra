@@ -6,6 +6,9 @@ import { useNavigation } from '@react-navigation/native';
 import { AppContext } from '../context/AppContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from '../../AuthContext';
+import DestinationDropDown from '../ShareFl/Pickers/DestinationDropDown';
+import MonthPickerDropDown from '../ShareFl/Pickers/MonthPickerDropDown';
+import PickUpDropDown from '../ShareFl/Pickers/PickUpDropDown';
 
 export default function NavigationBar() {
   const { selectedMonth, setSelectedMonth } = useContext(AppContext);
@@ -42,14 +45,17 @@ export default function NavigationBar() {
 
   return (
     <View style={styles.container}>
-      <Picker
+      <PickUpDropDown />
+      <DestinationDropDown />
+      <MonthPickerDropDown />
+      {/* <Picker
         selectedValue={destinationType}
         style={styles.picker}
         onValueChange={(itemValue) => setDestinationType(itemValue)}
       >
         <Picker.Item label="Ai" value="airport" />
         <Picker.Item label="Rai" value="railway" />
-      </Picker>
+      </Picker> */}
 
 
 
@@ -70,6 +76,7 @@ export default function NavigationBar() {
       {/* <Button title="Search" onPress={handleSearch} /> */}
       <Button title='Place Bid' onPress= {() => navigation.navigate("Placebid")}/>
       <Button title='Logout' onPress={handleLogOut} />
+
     </View>
   );
 }

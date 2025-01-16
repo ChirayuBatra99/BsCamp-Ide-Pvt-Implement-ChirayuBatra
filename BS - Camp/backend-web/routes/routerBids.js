@@ -34,7 +34,8 @@ router.get("/people", (req, res) => {
         if (!date) {
             return res.status(400).json({ error: "Date parameter is required" });
         }
-        const query1 = "SELECT * FROM bids WHERE day=? AND time=? AND userid!=?";
+        // const query1 = "SELECT * FROM bids WHERE day=? AND time=? AND userid!=?";
+        const query1 = "SELECT bids.*, users.phone FROM bids JOIN users ON bids.userid = users.id WHERE bids.day=? AND bids.time=? AND bids.userid!=?";
         db.query(query1, [date, time, userId], async (err, result) => {
             if (err) return res.status(500).send(err);
             if(result.length > 0)

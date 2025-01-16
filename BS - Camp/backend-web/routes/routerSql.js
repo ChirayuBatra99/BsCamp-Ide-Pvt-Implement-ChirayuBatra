@@ -113,20 +113,22 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/placebid", async(req,res) => {
-    const {email, selectedDate, timeRange, destination, userId} = req.body;
-    console.log(email, selectedDate, timeRange, destination);
-    
-    if(!email || !selectedDate || !timeRange || !destination)
+    // const {email, selectedDate, timeRange, destination, userId} = req.body;
+    // console.log(email, selectedDate, timeRange, destination);
+    const {selectedDate, timeRange, destination, userId} = req.body;
+    console.log(selectedDate, timeRange, destination, userId);
+
+    if(!selectedDate || !timeRange || !destination)
         return res.status(422).json({ error: "Enter all fields" });
     try{
-        db.query("SELECT * FROM bids WHERE user=? AND day=? AND time=? AND destination=?",[email, selectedDate, timeRange, destination], (err, result) => {
+        db.query("SELECT * FROM bids WHERE userid=? AND day=? AND time=? AND destination=?",[userId, selectedDate, timeRange, destination], (err, result) => {
             if (err) return res.status(500).send(err);
 
             if (result.length > 0) {
                 return res.status(422).json({ error: "You have already placed a bid in here" });
             }
             const sqlInsert = "INSERT INTO bids (user, day, time, destination, userid) VALUES (?, ?, ?, ?, ?)";
-            db.query(sqlInsert, [email, selectedDate, timeRange, destination, userId], (err, result) => {
+            db.query(sqlInsert, ["Will remove", selectedDate, timeRange, destination, userId], (err, result) => {
                 if (err) return res.status(500).send(err);
 
                 res.status(201).json({ message: "Bid placed successfully" });

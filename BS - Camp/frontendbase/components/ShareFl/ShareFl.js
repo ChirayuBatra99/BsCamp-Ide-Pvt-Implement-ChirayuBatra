@@ -10,19 +10,22 @@ import DestinationPicker from './A';
 import DestinationDropDown from './Pickers/DestinationDropDown';
 import PickUpDropDown from './Pickers/PickUpDropDown';
 import MonthPickerDropDown from './Pickers/MonthPickerDropDown';
+import TopNavigationBar from '../NavigationBar/TopNavigationBar';
 
 
 export default function ShareFl() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <Text style={styles.header}>App Name</Text>
+        {/* <Text style={styles.header}>App Name</Text> */}
+        <TopNavigationBar />
         <AppProvider>
           <NavigationBar />
           {/* <DestinationPicker /> */}
           {/* <PickUpDropDown /> */}
           {/* <DestinationDropDown /> */}
-          <MonthPickerDropDown />
+          {/* <MonthPickerDropDown />
+          <DestinationDropDown /> */}
           <Grid />
         </AppProvider>
       </View>

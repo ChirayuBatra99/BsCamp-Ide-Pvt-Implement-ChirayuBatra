@@ -43,7 +43,7 @@ const PlaceBid = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email,
+          // email,
           selectedDate: selectedDate.toISOString().split('T')[0],
           timeRange: formattedTimeRange,
           destination,
@@ -67,7 +67,7 @@ const PlaceBid = () => {
       <Text style={styles.heading}>B Page</Text>
 
       {/* Email Input */}
-      <Text style={styles.label}>Phone:</Text>
+      {/* <Text style={styles.label}>Phone:</Text>
       <TextInput
         style={styles.input}
         placeholder="Enter your phone number"
@@ -75,7 +75,7 @@ const PlaceBid = () => {
         onChangeText={(text) => setEmail(text)}
         keyboardType="email-address"
         autoCapitalize="none"
-      />
+      /> */}
 
       {/* Date Picker */}
       <Text style={styles.label}>Select a Day:</Text>
