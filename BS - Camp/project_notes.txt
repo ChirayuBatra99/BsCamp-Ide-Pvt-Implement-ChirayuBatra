@@ -39,7 +39,7 @@ Npx react-native run-android
 Npc react-native start
 
 
-
+the error of text strings should be rendered inside text component by removing the semicolon from })}; 
 
 
 

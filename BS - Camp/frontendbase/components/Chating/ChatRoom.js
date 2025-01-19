@@ -74,6 +74,8 @@ const ChatRoom = () => {
 
     const sendMessage = async (senderId, receiverId) => {
         try {
+            if(message=='')
+                return;
             await axios.post('http://10.0.2.2:8005/sendMessage', {
                 senderId,
                 receiverId,
