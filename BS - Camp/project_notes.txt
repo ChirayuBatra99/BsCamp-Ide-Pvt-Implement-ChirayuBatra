@@ -7,7 +7,7 @@ Insert an 'all messages' button on the top
 Enhance home screen UI (design a figma UI and then strictly follow every cm in code)
 Enhance login screen UI
 Enhance signup screen UI
-
+In the top right corner of home page, introduce icon of all messages.
 Implement audio calling between users.
 
 Previous JDK version was 21.0.2

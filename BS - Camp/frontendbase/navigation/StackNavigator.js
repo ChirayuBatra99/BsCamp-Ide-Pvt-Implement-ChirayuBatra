@@ -158,7 +158,7 @@ const StackNavigator = () => {
                   borderWidth: 2,
                   opacity: 0.6,
                 }}
-                focused={focused==='GridScreen'}
+                // focused={focused==='GridScreen'}
                 inactiveBackgroundColor='green'
                 activeBackgroundColor='white'
                 inactiveTintColor='yellow'
@@ -183,7 +183,7 @@ const StackNavigator = () => {
     return (
       <Stack.Navigator>
         <Stack.Screen
-          name="GridScreen"
+          name="MainScreen"
           component={ScreenWithDrawer}
           options={{ headerShown: false }}
         />

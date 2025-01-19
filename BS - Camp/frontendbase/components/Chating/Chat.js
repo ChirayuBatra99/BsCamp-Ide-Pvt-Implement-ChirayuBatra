@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect, useContext } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
@@ -49,16 +49,19 @@ const Chat = ({ item }) => {
             style={{ marginVertical: 15 }}
         >
             
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                <View>
-                    <Text style={{ fontSize: 15, fontWeight: '500' }}>{item?.phone},{item?.userid}</Text>
-                     {/* <Text style={{ marginTop: 4, color: 'gray' }}>
-                        {lastMessage
-                            ? lastMessage.message
-                            : `Start chat with ${item?.name}`}
-                    </Text>                                             FIX THIS */}
-                </View>
-
+            <View style={styles.container}>
+                <Text style={styles.text}>{item?.phone}, {item?.userid}</Text>
+                
+                <TouchableOpacity 
+                    style={styles.messageButton}
+                    onPress={() => navigation.navigate('ChatRoom', {
+                        name: item?.phone,
+                        receiverId: item?.userid,
+                    })}
+                >
+                    {/* <Ionicons name="chatbubble-ellipses-outline" size={20} color="white" /> */}
+                    <Text style={styles.buttonText}>Message</Text>
+                </TouchableOpacity>
             </View>
         </Pressable>
     )
@@ -66,4 +69,50 @@ const Chat = ({ item }) => {
 
 export default Chat
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        backgroundColor: '#f5f5f5',
+        padding: 10,
+        borderRadius: 8,
+        elevation: 3,  // Shadow for Android
+        shadowColor: '#000',
+        shadowOffset: { width: 1, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+        width: '100%'
+    },
+    text: {
+        fontSize: 15,
+        fontWeight: '500',
+        color: '#333',
+    },
+    messageButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#007AFF',  // iOS blue color
+        paddingVertical: 8,
+        paddingHorizontal: 12,
+        borderRadius: 20,
+        elevation: 2,
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 14,
+        fontWeight: '600',
+        marginLeft: 5,
+    }
+})
+
+
+
+
+
+
+ {/* <Text style={{ marginTop: 4, color: 'gray' }}>
+                        {lastMessage
+                            ? lastMessage.message
+                            : `Start chat with ${item?.name}`}
+                    </Text>                                             FIX THIS */}

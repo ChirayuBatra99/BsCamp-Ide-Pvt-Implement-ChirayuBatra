@@ -25,7 +25,7 @@ const ChatRoom = () => {
                 </View>
             )
         });
-    }, [route?.params?.name] );
+    }, [route?.params?.name]);
 
     const listeMessages = () => {
         const { socket } = useSocketContext();
@@ -47,15 +47,15 @@ const ChatRoom = () => {
             const senderId = userId;
             const receiverId = route?.params?.receiverId;
 
-            const conversationId = (senderId<receiverId)? `${senderId}_${receiverId}` : `${receiverId}_${senderId}`;
+            const conversationId = (senderId < receiverId) ? `${senderId}_${receiverId}` : `${receiverId}_${senderId}`;
 
             const response = await axios.get('http://10.0.2.2:8005/messages', {
                 // params: { senderId, receiverId },
-                params: {conversationId},
+                params: { conversationId },
             });
             setMessages(response.data);
             console.log(response.data);
-            
+
         }
         catch (error) {
             console.log('Error', error);
@@ -67,10 +67,10 @@ const ChatRoom = () => {
     }, []);
 
     // console.log('messages', messages);
-    // const formatTime = time => {
-    //     const options = { hour: 'numeric', minute: 'numeric' };
-    //     return new Date(time).toLocaleString('en-US', options);
-    // };
+    const formatTime = time => {
+        const options = { hour: 'numeric', minute: 'numeric' };
+        return new Date(time).toLocaleString('en-US', options);
+    };
 
     const sendMessage = async (senderId, receiverId) => {
         try {
@@ -92,36 +92,84 @@ const ChatRoom = () => {
 
     return (
         <KeyboardAvoidingView style={{ flex: 1, backgroundColor: 'white' }}>
+            <Text>Person:  {route?.params?.name}</Text>
             <ScrollView>
-                <Text>Person:  {route?.params?.name}</Text>
-                {messages?.map((item, index) => {
-                    return (
-                        <Pressable
-                            style={[
-                                item?.senderId === userId
-                                    ? {
-                                        alignSelf: 'flex-end',
-                                        backgroundColor: '#DCF8C6',
-                                        padding: 8,
-                                        maxWidth: '60%',
-                                        borderRadius: 7,
-                                        margin: 10,
-                                    }
-                                    : {
-                                        alignSelf: 'flex-start',
-                                        backgroundColor: 'white',
-                                        padding: 8,
-                                        margin: 10,
-                                        borderRadius: 7,
-                                        maxWidth: '60%',
-                                    },
-                            ]}>
-                            <Text style={{ fontSize: 13, textAlign: "left" }}>{item?.message}</Text>
-                            {/* <Text style={{ textAlign: "right", fontSize: 9, color: "gray", marginTop: 4 }}>{formatTime(item?.timeStamp)}</Text> */}
-                        </Pressable>
-                    );
-                })};
+                <View>
+                    {messages?.map((item, index) => {
+                        return (
+                            <View
+                                key={index}
+                                style={[
+                                    item?.senderId === userId
+                                        ? {
+                                            alignSelf: 'flex-end',
+                                            backgroundColor: '#DCF8C6',
+                                            padding: 8,
+                                            maxWidth: '60%',
+                                            borderRadius: 7,
+                                            margin: 10,
+                                        }
+                                        : {
+                                            alignSelf: 'flex-start',
+                                            backgroundColor: 'white',
+                                            padding: 8,
+                                            margin: 10,
+                                            borderRadius: 7,
+                                            maxWidth: '60%',
+                                        },
+                                ]}
+                            >
+                                <Text style={{ fontSize: 13, textAlign: "left" }}>{item?.message}</Text>
+                                <Text style={{ textAlign: "right", fontSize: 9, color: "gray", marginTop: 4 }}>{formatTime(item?.timeStamp)}</Text>
+                            </View>
+                        );
+                    })}
+                </View>
             </ScrollView>
+
+
+            {/* <ScrollView>
+                <View>
+                    {messages?.map((item, index) => {
+                        return (
+                            <View
+                                key={index}
+                                style={[
+                                    item?.senderId === userId
+                                        ? {
+                                            alignSelf: 'flex-end',
+                                            backgroundColor: '#DCF8C6',
+                                            padding: 8,
+                                            maxWidth: '60%',
+                                            borderRadius: 7,
+                                            margin: 10,
+                                        }
+                                        : {
+                                            alignSelf: 'flex-start',
+                                            backgroundColor: 'white',
+                                            padding: 8,
+                                            margin: 10,
+                                            borderRadius: 7,
+                                            maxWidth: '60%',
+                                        },
+                                ]}
+                            >
+                                <Text style={{ fontSize: 13, textAlign: 'left' }}>{item?.message}</Text>
+                                <Text
+                                    style={{
+                                        textAlign: 'right',
+                                        fontSize: 9,
+                                        color: 'gray',
+                                        marginTop: 4,
+                                    }}
+                                >
+                                    {formatTime(item?.timeStamp)}
+                                </Text>
+                            </View>
+                        );
+                    })}
+                </View>
+            </ScrollView> */}
 
             <View
                 style={{
