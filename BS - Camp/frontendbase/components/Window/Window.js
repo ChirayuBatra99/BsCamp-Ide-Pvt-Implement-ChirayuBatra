@@ -7,7 +7,12 @@ export default function Window({ hour, date, destination, month, year }) {
 
   const navigation = useNavigation();
   
-
+  const emojis = [
+    "😎","👦🏻", "👧🏼", "👦🏻", "👦🏻", "👦🏻", 
+    "👧🏻", "👦🏼", "👧🏻", "👧🏼", "👦🏼"  
+  ];
+  
+  
   const month1 = String(month).padStart(2, "0");
   const date1 = String(date).padStart(2, "0");
 
@@ -62,7 +67,16 @@ export default function Window({ hour, date, destination, month, year }) {
 
   return (
     <TouchableOpacity style={styles.box} onPress={handlePress}>
-      <Text>{bids ? bids + " guy" : ''}</Text>
+      <Text>{bids ? 
+      // bids + " guy" : 
+      // bids +
+      // `${Array.from({ length: bids }, (_, i) => `${emojis[Math.floor(Math.random()*10)]}`).join(" ")}`
+      `${Array.from({ length: bids }, (_, i) => `${emojis[0]}`).join(" ")}`
+
+      : 
+
+      ''
+      }</Text>
       {/* <Text>{day}</Text> */}
     </TouchableOpacity>
   )
@@ -72,6 +86,6 @@ const styles = StyleSheet.create({
   box: {
     height: 48,
     width: 48,
-    backgroundColor: 'yellow'
+    backgroundColor: 'black'
   }
 })

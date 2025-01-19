@@ -58,9 +58,11 @@ export default function NavigationBar() {
         {/* <View  style={styles.bidbutton}>
            <Button title='Place Bid' onPress= {() => navigation.navigate("Placebid")}/>
       </View> */}
+      <View style={{padding: 10,  }}>
        <TouchableOpacity style={styles.roundButton} onPress={() => navigation.navigate("Placebid")}>
         <Text style={styles.buttonText}> Place {`\n`} a bid</Text>
       </TouchableOpacity>
+      </View>
       </View>
 
       
@@ -105,16 +107,17 @@ const styles = StyleSheet.create({
     width: 200,
   },
   roundButton: {
+    // marginRight: -20,
     width: 70,
     height: 70,
-    borderRadius: 50,
+    borderRadius: 35,
     backgroundColor: 'grey',
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.8,
-    shadowRadius: 5,
+    shadowColor: 'black',
+    shadowOffset: { width: 5, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 1,
     elevation: 10,
   },
   buttonText: {

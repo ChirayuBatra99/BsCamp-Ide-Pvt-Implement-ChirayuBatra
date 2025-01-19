@@ -2,6 +2,8 @@ Design logo.
 Implement the app start animations.
 ---->    The above two to be done in last.
 
+Insert an 'all messages' button on the top
+
 Enhance home screen UI (design a figma UI and then strictly follow every cm in code)
 Enhance login screen UI
 Enhance signup screen UI
@@ -10,9 +12,9 @@ Implement audio calling between users.
 
 Previous JDK version was 21.0.2
 
-
-
-
+Add option of adding multiple time slots at once, while placing bid, on the bids page
+Add down and right margins to my grid as well, so that it looks well.
+Display a small menu on place bid page, the start place pointing to the destination place, for which the user is going to place a bid.
 
 How i build the apk version: (yt Sujan Anand)
 

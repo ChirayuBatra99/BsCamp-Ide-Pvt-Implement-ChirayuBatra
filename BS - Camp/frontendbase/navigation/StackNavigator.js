@@ -22,12 +22,10 @@ import Profile from '../components/Profile/Profile';
 
 const Drawer = createDrawerNavigator();
 
-
-
 const StackNavigator = () => {
   const Tab = createBottomTabNavigator();
   const Stack = createNativeStackNavigator();
-  const { token, setToken, loading } = useContext(AuthContext);
+  const { token, setToken, loading, setAuthUser, setUserId } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -57,10 +55,21 @@ const StackNavigator = () => {
   const ScreenWithDrawer = () => {
     return (
       <Drawer.Navigator
+      screenOptions={{ 
+        // drawerActiveTintColor: 'yellow',
+        // drawerActiveBackgroundColor: 'blue', 
+        drawerStyle: {
+          width: '60%',
+          // backgroundColor: '#c6cbef',
+
+        } ,
+        
+      }}
+        // style={styles.drawerWidth}
         initialRouteName='GridScreen'
         drawerContent={props => {
           const { routeNames, index } = props.state;
-          const focused = routeNames[index];
+          let focused = routeNames[index];
           console.log('focused', focused);
 
           return (
@@ -73,54 +82,99 @@ const StackNavigator = () => {
                 label={'Placebid'}
                 onPress={() => {
                   props.navigation.navigate('Placebid');
+                  focused = 'Placebid'
                 }}
+                style={{
+                  // backgroundColor: '#9dd3c8',
+                  borderColor: 'black',
+                  borderWidth: 2,
+                  opacity: 0.6,
+                }}
+               
                 // focused={focused === SCREENS.PROFILE}
-                // activeBackgroundColor={COLORS.ORANGE}
-                // inactiveBackgroundColor={COLORS.GRAY_LIGHT}
-                // inactiveTintColor={COLORS.BLACK}
-                // activeTintColor={COLORS.WHITE}
+                // drawerActiveTintColor= {'yellow'},
+                focused={focused==='Placebid'}
+                inactiveBackgroundColor='green'
+                activeBackgroundColor='white'
+                inactiveTintColor='yellow'
+                activeTintColor='pink'
               />
                <DrawerItem
                 label={'Profile'}
                 onPress={() => {
                   props.navigation.navigate('Profile');
+                  focused='Profile'
                 }}
-                // focused={focused === SCREENS.PROFILE}
-                // activeBackgroundColor={COLORS.ORANGE}
-                // inactiveBackgroundColor={COLORS.GRAY_LIGHT}
-                // inactiveTintColor={COLORS.BLACK}
-                // activeTintColor={COLORS.WHITE}
+                style={{
+                  // backgroundColor: '#9dd3c8',
+                  borderColor: 'black',
+                  borderWidth: 2,
+                  opacity: 0.6,
+                }}
+                focused={focused==='Profile'}
+                inactiveBackgroundColor='green'
+                activeBackgroundColor='white'
+                inactiveTintColor='yellow'
+                activeTintColor='pink'
+
               />
               <DrawerItem
                 label={'ShareFl'}
                 onPress={() => {
                   props.navigation.navigate('GridScreen');
+                  focused='GridScreen'
                 }}
-                // focused={focused === SCREENS.PROFILE}
-                // activeBackgroundColor={COLORS.ORANGE}
-                // inactiveBackgroundColor={COLORS.GRAY_LIGHT}
-                // inactiveTintColor={COLORS.BLACK}
-                // activeTintColor={COLORS.WHITE}
+                style={{
+                  // backgroundColor: '#9dd3c8',
+                  borderColor: 'black',
+                  borderWidth: 2,
+                  opacity: 0.6,
+                }}
+                focused={focused==='GridScreen'}
+                inactiveBackgroundColor='green'
+                activeBackgroundColor='white'
+                inactiveTintColor='yellow'
+                activeTintColor='pink'
               />
-              {/* <DrawerItem
-                label={'About'}
+
+               <DrawerItem
+                label={'Login'}
                 onPress={() => {
-                  props.navigation.navigate(SCREENS.ABOUT);
+                  props.navigation.navigate('GridScreen');
+                  // focused='GridScreen'
+                  try{
+                    AsyncStorage.removeItem('authToken');
+                    setToken('');
+                    setAuthUser('');
+                    setUserId('');
+                    navigation.replace('Login');
+                  } catch(error) {
+                    console.log("error logging out bro", error);
+                  }
                 }}
-                focused={focused === SCREENS.ABOUT}
-                activeBackgroundColor={COLORS.ORANGE}
-                inactiveBackgroundColor={COLORS.GRAY_LIGHT}
-                inactiveTintColor={COLORS.BLACK}
-                activeTintColor={COLORS.WHITE}
-              /> */}
+                style={{
+                  // backgroundColor: '#9dd3c8',
+                  borderColor: 'black',
+                  borderWidth: 2,
+                  opacity: 0.6,
+                }}
+                focused={focused==='GridScreen'}
+                inactiveBackgroundColor='green'
+                activeBackgroundColor='white'
+                inactiveTintColor='yellow'
+                activeTintColor='pink'
+              />
 
             </DrawerContentScrollView>
           )
         }}
       >
-        <Drawer.Screen name="Placebid" component={PlaceBid} />
-        <Drawer.Screen name="GridScreen" component={ShareFl} />
+                                                                            {/* Bid for c*b share */}
+        <Drawer.Screen name="Placebid" component={PlaceBid} options={{ title: 'Place B' }} /> 
+        <Drawer.Screen name="GridScreen" component={ShareFl} options={{title: 'Bscmap'}} />
         <Drawer.Screen name="Profile" component={Profile} />
+        <Drawer.Screen name="Login" component={Login} options={{ title: 'Login' }} /> 
+
       </Drawer.Navigator>
     )
   };
@@ -182,4 +236,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  drawerWidth: {
+    width: 30,
+    color: 'green'
+  }
 });
