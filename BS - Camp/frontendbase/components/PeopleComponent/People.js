@@ -1,10 +1,11 @@
-import { View, Text, StyleSheet, Image, Button, Alert } from 'react-native'
+import { View, Text, StyleSheet, Image, Button, Alert, ScrollView, KeyboardAvoidingView } from 'react-native'
 import React, { useState, useEffect, useContext } from 'react'
 import peopleData from "./peopledata";
 import { AuthContext } from '../../AuthContext';
 import { useRoute } from '@react-navigation/native';
 
 import Chat from '../Chating/Chat';
+// import { ScrollView } from 'react-native-gesture-handler';
 
 const People = () => {
     const [peopleData, setPeopleData] = useState([]);
@@ -41,24 +42,39 @@ const People = () => {
         fetchData();
     }, [day]);
 
+    function formatDate(day) {
+        const date = new Date(day);
+        const options = { day: 'numeric', month: 'short', year: 'numeric' };
+        return date.toLocaleDateString('en-GB', options);
+    }
+    function formatTimeRange(timeStr) {
+        let startHour = parseInt(timeStr.slice(0, 2), 10);
+        let endHour = parseInt(timeStr.slice(2, 4), 10);
+    
+        const formatHour = (hour) => {
+            let period = hour < 12 ? "AM" : "PM";
+            let formattedHour = hour % 12 || 12; // Convert 0 to 12 AM and 12 remains 12 PM
+            return `${formattedHour} ${period}`;
+        };
+    
+        return `${formatHour(startHour)} - ${formatHour(endHour)}`;
+    }
     return (
+        <KeyboardAvoidingView style={{flex: 1, backgroundColor: 'green'}}>
         <View style={styles.container}>
-            <Text>Date: {day}  Time-slot: {time}</Text>
-
+            {/* <View style={styles.headersTimeDay}> */}
+                <Text style={styles.headerDayText}>{formatDate(day)}</Text>
+                <Text style={styles.headerTimeText}>{formatTimeRange(time)}</Text>
+            {/* </View> */}
             {/* From here to */}
                 {
                     peopleData?.map((peep) => (
-                        <View key={peep.bid_id} style={styles.card}>
                         <Chat item={peep} key={peep?.bid_id} />
-                        </View>
                     ))
                 }
                {/* To here */}
-
-            
-           
-
         </View>
+        </KeyboardAvoidingView>
     )
 }
 
@@ -66,21 +82,24 @@ const People = () => {
 const styles = StyleSheet.create({
     container: {
         padding: 10,
-        marginTop: 40,
+        marginTop: 10,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-    card: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        marginBottom: 10,
-        padding: 10,
-        backgroundColor: "#f9f9f9",
-        borderRadius: 10,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 5,
-        elevation: 3,
+    headerDayText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        // width: '25%'
+    },
+    headerTimeText: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        // width: '40%'
+    },
+    headersTimeDay: {
+
     },
     image: {
         width: 50,
@@ -98,6 +117,20 @@ const styles = StyleSheet.create({
     phone: {
         fontSize: 14,
         color: "gray",
+    },
+    card: {
+        // flexDirection: "row",
+        // alignItems: "center",
+        // justifyContent: "space-between",
+        // marginBottom: 10,
+        // padding: 10,
+        // backgroundColor: "#f9f9f9",
+        // borderRadius: 10,
+        // shadowColor: "#000",
+        // shadowOffset: { width: 0, height: 2 },
+        // shadowOpacity: 0.2,
+        // shadowRadius: 5,
+        // elevation: 3,
     },
 });
 

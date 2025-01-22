@@ -11,32 +11,6 @@ const Chat = ({ item }) => {
     console.log("broUseridChat.jspage", userId);
     const [messages, setMessages] = useState([]);
 
-    // const fetchMessages = async () => {
-    //     try {
-    //         const senderId = userId;
-    //         const receiverId = item?._id;
-    //         console.log(senderId);
-    //         console.log(receiverId);
-
-    //         const response = await axios.get('http://localhost:8005/messages', {
-    //             params: { senderId, receiverId },
-    //         });
-    //         setMessages(response.data);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
-
-    // console.log("messages", messages);
-    // useEffect(() => {
-    //     fetchMessages();
-    // }, []);
-
-    // const getLastMessage = () => {
-    //     const n = messages.length;
-    //     return messages[n - 1];
-    // };
-    // const lastMessage = getLastMessage();
 
     return (
         <Pressable
@@ -46,7 +20,7 @@ const Chat = ({ item }) => {
                     receiverId: item?.userid,          //    FIX THIS
                 })
             }
-            style={{ marginVertical: 15 }}
+            style={{ marginVertical: 5 }}
         >
             
             <View style={styles.container}>
@@ -77,7 +51,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#f5f5f5',
         padding: 10,
         borderRadius: 8,
-        elevation: 3,  // Shadow for Android
+        elevation: 7,  // Shadow for Android
         shadowColor: '#000',
         shadowOffset: { width: 1, height: 2 },
         shadowOpacity: 0.3,
@@ -105,6 +79,39 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     }
 })
+
+
+
+
+  // const fetchMessages = async () => {
+    //     try {
+    //         const senderId = userId;
+    //         const receiverId = item?._id;
+    //         console.log(senderId);
+    //         console.log(receiverId);
+
+    //         const response = await axios.get('http://localhost:8005/messages', {
+    //             params: { senderId, receiverId },
+    //         });
+    //         setMessages(response.data);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
+
+    // console.log("messages", messages);
+    // useEffect(() => {
+    //     fetchMessages();
+    // }, []);
+
+    // const getLastMessage = () => {
+    //     const n = messages.length;
+    //     return messages[n - 1];
+    // };
+    // const lastMessage = getLastMessage();
+
+
+
 
 
 

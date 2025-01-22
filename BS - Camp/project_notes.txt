@@ -10,6 +10,11 @@ Enhance signup screen UI
 In the top right corner of home page, introduce icon of all messages.
 Implement audio calling between users.
 
+The functionality of sending a photo will be Implemented later, right now it seems of no use. 
+Right now i shall do for the location in the messages screen.
+
+In between chats, add the chat day text also, means this chat was 19 Jan chat, this onwards is Today's chat, like we have on whatsapp.
+On the People screen, sort the people based on the timestamp of their last message. Plus you would have called that API then display the last message too.
 Previous JDK version was 21.0.2
 
 Add option of adding multiple time slots at once, while placing bid, on the bids page

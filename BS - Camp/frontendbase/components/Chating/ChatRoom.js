@@ -1,4 +1,4 @@
-import { View, Text, KeyboardAvoidingView, ScrollView, Pressable, TextInput } from 'react-native'
+import { View, Text, KeyboardAvoidingView, ScrollView, Pressable, TextInput, StyleSheet } from 'react-native'
 import React, { useContext, useEffect, useState, useLayoutEffect } from 'react';
 
 import { AuthContext } from '../../AuthContext';
@@ -93,8 +93,13 @@ const ChatRoom = () => {
     };
 
     return (
-        <KeyboardAvoidingView style={{ flex: 1, backgroundColor: 'white' }}>
-            <Text>Person:  {route?.params?.name}</Text>
+        <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#040303' }}>
+            <Text style={{ backgroundColor: 'white'}}>Person:  {route?.params?.name}</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: 'white' }}>
+                    <View>
+                        <Text>{route?.params?.name}</Text>
+                    </View>
+                </View>
             <ScrollView>
                 <View>
                     {messages?.map((item, index) => {
@@ -105,77 +110,36 @@ const ChatRoom = () => {
                                     item?.senderId === userId
                                         ? {
                                             alignSelf: 'flex-end',
-                                            backgroundColor: '#DCF8C6',
+                                            backgroundColor: '#e9ecd1',
                                             padding: 8,
                                             maxWidth: '60%',
-                                            borderRadius: 7,
-                                            margin: 10,
+                                            borderRadius: 8,
+                                            margin: 4,
+
                                         }
                                         : {
                                             alignSelf: 'flex-start',
-                                            backgroundColor: 'white',
+                                            backgroundColor: '#bef3f5',
                                             padding: 8,
-                                            margin: 10,
-                                            borderRadius: 7,
+                                            margin: 4,
+                                            borderRadius: 8,
                                             maxWidth: '60%',
                                         },
                                 ]}
                             >
-                                <Text style={{ fontSize: 13, textAlign: "left" }}>{item?.message}</Text>
-                                <Text style={{ textAlign: "right", fontSize: 9, color: "gray", marginTop: 4 }}>{formatTime(item?.timeStamp)}</Text>
+                                <View style={styles.chatbox}>
+                                    <Text style={{ fontSize: 13, textAlign: "left" }}>{item?.message}</Text>
+                                    <Text style={{ textAlign: "right", fontSize: 9, color: "gray", marginBottom: -4, marginLeft: 6 }}>{formatTime(item?.timeStamp)}</Text>
+                                </View>
                             </View>
                         );
                     })}
                 </View>
             </ScrollView>
 
-
-            {/* <ScrollView>
-                <View>
-                    {messages?.map((item, index) => {
-                        return (
-                            <View
-                                key={index}
-                                style={[
-                                    item?.senderId === userId
-                                        ? {
-                                            alignSelf: 'flex-end',
-                                            backgroundColor: '#DCF8C6',
-                                            padding: 8,
-                                            maxWidth: '60%',
-                                            borderRadius: 7,
-                                            margin: 10,
-                                        }
-                                        : {
-                                            alignSelf: 'flex-start',
-                                            backgroundColor: 'white',
-                                            padding: 8,
-                                            margin: 10,
-                                            borderRadius: 7,
-                                            maxWidth: '60%',
-                                        },
-                                ]}
-                            >
-                                <Text style={{ fontSize: 13, textAlign: 'left' }}>{item?.message}</Text>
-                                <Text
-                                    style={{
-                                        textAlign: 'right',
-                                        fontSize: 9,
-                                        color: 'gray',
-                                        marginTop: 4,
-                                    }}
-                                >
-                                    {formatTime(item?.timeStamp)}
-                                </Text>
-                            </View>
-                        );
-                    })}
-                </View>
-            </ScrollView> */}
-
             <View
                 style={{
-                    backgroundColor: 'white',
+                    backgroundColor: '#440860',
                     flexDirection: 'row',
                     alignItems: 'center',
                     paddingHorizontal: 10,
@@ -186,7 +150,7 @@ const ChatRoom = () => {
                 }}
             >
                 <TextInput
-                    placeholder="type your message..."
+                    placeholder="Type your message..."
                     value={message}
                     onChangeText={setMessage}
                     style={{
@@ -197,10 +161,11 @@ const ChatRoom = () => {
                         borderRadius: 20,
                         paddingHorizontal: 10,
                         marginLeft: 10,
+                        backgroundColor: 'white'
                     }}
                 />
 
-                <View
+                {/* <View
                     style={{
                         flexDirection: 'row',
                         alignItems: 'center',
@@ -209,7 +174,7 @@ const ChatRoom = () => {
                     }}>
                     <Text>Camera Icon</Text>
                     <Text>Mic Icon</Text>
-                </View>
+                </View> */}
 
                 <Pressable
                     onPress={() => sendMessage(userId, route?.params?.receiverId)}
@@ -218,13 +183,25 @@ const ChatRoom = () => {
                         paddingHorizontal: 12,
                         paddingVertical: 8,
                         borderRadius: 20,
+                        marginLeft: 6
                     }}
                 >
-                    <Text style={{ textAlign: 'center', color: 'white' }}>Send</Text>
+                    {/* {message && ( */}
+                    <Text style={{ textAlign: 'center', color: 'white', }}>Send</Text>
+                    {/* )} */}
                 </Pressable>
             </View>
         </KeyboardAvoidingView>
     );
 };
+
+const styles = StyleSheet.create({
+    chatbox: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',  // Pushes the items apart
+        alignItems: 'flex-end',  
+    }
+});
 
 export default ChatRoom;
