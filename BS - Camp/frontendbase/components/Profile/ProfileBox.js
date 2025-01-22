@@ -1,14 +1,50 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../AuthContext';
 
+import ImagePicker from 'react-native-image-crop-picker';
+// import { Image } from 'react-native-svg';
+
 const ProfileBox = () => {
 
-    const baseURL = 'http://10.0.2.2:8005';
+      const baseURL = 'http://10.0.2.2:8005';
       const { token } = useContext(AuthContext);
       const [phone, setPhone] = useState('');
       const [tok, setTok] = useState('');
 
+      const [profileImage, setProfileImage] = useState();
+
+      const openCamera = async() => {
+          try{
+            await ImagePicker.openCamera({
+              width: 300,
+              height: 400,
+              cropping: true,
+            }).then(image => {
+              console.log(image);
+              setProfileImage(image);
+            });
+          }
+          catch(error) {
+            console.log("error", error.message);            
+          }
+      };
+
+      const openGallery = async() => {
+        try{
+        await ImagePicker.openPicker({
+          width: 300,
+          height: 400,
+          cropping: true
+        }).then(image => {
+          console.log(image);
+          setProfileImage(image);
+        });
+      }
+      catch(error) {
+        console.log("error", error.message);        
+      }
+      };
 
       useEffect(() => {
         const fetchProfile = async () => {
@@ -27,7 +63,7 @@ const ProfileBox = () => {
     
             const data = await res.json();
             console.log("Received Data:", data);
-    
+            setPhone(data)
           } catch (error) {
             console.log("Error fetching profile:", error.message);
           }
@@ -41,13 +77,25 @@ const ProfileBox = () => {
   return (
     <View>
       <Text>{phone} </Text>
+      <Image
+        resizeMode='contain'
+        source={{uri:profileImage?.path}}
+        style={styles.imageStyles}
+      />
+      <Button title="gallery bro" onPress={() => openGallery()} />
     </View>
   )
 }
 
 export default ProfileBox
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  imageStyles: {
+    height: 200,
+    width: 200,
+    borderRadius: 30
+  }
+});
 
 
 
