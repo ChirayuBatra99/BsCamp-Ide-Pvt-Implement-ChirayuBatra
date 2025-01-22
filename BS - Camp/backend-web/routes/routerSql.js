@@ -92,7 +92,21 @@ router.post("/login", async (req, res) => {
             const token = jwt.sign({userId: user.id}, secretKey);
 
             console.log("Token sent bro");
+            // res.status(201).json({token});
+            const query2 = "UPDATE users SET token = ? WHERE phone = ?";
+            db.query(query2, [token, phone], async(err, result) => {
+                if(err) return res.status(500).send(err);
+                console.log("Token added in sql databse too");
+            })
+            await User.updateOne(
+                { phone: phone },  // Match the document by phone number
+                { $set: { token: token } } // Update the token field
+            );
             res.status(201).json({token});
+
+
+
+
 
             // res.cookie("Bscamp", token, {
             //     expires: new Date(Date.now() + 36000000),

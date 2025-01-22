@@ -22,6 +22,7 @@ const app = express();
 
 const router = require("./routes/routerSql");
 const routerForBids = require("./routes/routerBids");
+const mongoRouter = require("./routes/routerMongo");
 
 const path = require("path");
 
@@ -45,6 +46,7 @@ server.listen(3000, () => {
 
 app.use(router);
 app.use(routerForBids);
+app.use(mongoRouter);
 
 app.listen(PORT, ()=>{
     console.log("app running on PORT", PORT);

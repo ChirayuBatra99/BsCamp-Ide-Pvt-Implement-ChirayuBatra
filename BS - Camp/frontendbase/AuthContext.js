@@ -7,6 +7,7 @@ const AuthContext = createContext();
 const AuthProvider = ({children}) => {
     const [token, setToken] = useState('');
     const [userId, setUserId] = useState('');
+    const [mongoId, setMongoId] = useState('');
     const [authUser, setAuthUser] = useState(
         AsyncStorage.getItem('authToken') || null,
     );
