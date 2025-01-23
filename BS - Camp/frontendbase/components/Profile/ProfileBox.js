@@ -77,11 +77,13 @@ const ProfileBox = () => {
   return (
     <View>
       <Text>{phone} </Text>
-      <Image
-        resizeMode='contain'
-        source={{uri:profileImage?.path}}
-        style={styles.imageStyles}
+      <View style= {styles.imageView}>
+         <Image
+            resizeMode='contain'
+            source={{uri:profileImage?.path}}
+            style={styles.imageStyles}
       />
+      </View>
       <Button title="gallery bro" onPress={() => openGallery()} />
     </View>
   )
@@ -91,9 +93,16 @@ export default ProfileBox
 
 const styles = StyleSheet.create({
   imageStyles: {
-    height: 200,
-    width: 200,
-    borderRadius: 30
+    height: '100%',
+    width: '100%',
+    // borderRadius: 200, // Half of width/height for a circular image
+    overflow: "hidden",
+  },
+  imageView: {
+    height: 150,
+    width: 150,
+    borderRadius: 0, // Same as imageStyles
+    overflow: "hidden",
   }
 });
 

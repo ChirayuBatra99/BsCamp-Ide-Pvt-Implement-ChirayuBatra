@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, Image } from 'react-native';
 import React, { useContext, useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -8,6 +8,9 @@ import ProfileBox from '../components/Profile/ProfileBox';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+
+import Video from 'react-native-video';
+
 
 import ShareFl from '../components/ShareFl/ShareFl'
 import Login from '../components/LoginSignup/Login';
@@ -213,10 +216,31 @@ const StackNavigator = () => {
   }
   if (loading) {
     return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#0000ff" />
-        <Text>Loading...</Text>
+      // <View style={styles.loadingContainer}>
+      //   <ActivityIndicator size="large" color="#0000ff" />
+      //   <Text>Loading...</Text>
+      // </View>
+      <View style={styles.container}>
+      {/* <Video
+          source={require('../svgs/figma12.mp4')} // Your video file in assets
+          style={styles.backgroundVideo}
+          // resizeMode="cover"
+          // onEnd={() => navigation.replace('HomeScreen')} // Auto-navigate on video end
+          repeat={true} // Set true if you want a loop
+      /> */}
+        <View style={styles.overlayContainer2}>
+              <Image
+                    source={require('../svgs/v.png')} // Replace with your image file
+                    style={styles.image2}
+              />
+        </View>
+      <View style={styles.overlayContainer}>
+                <Image
+                    source={require('../svgs/texi.png')} // Replace with your image file
+                    style={styles.image}
+                />
       </View>
+  </View>
     )
   }
 
@@ -239,5 +263,37 @@ const styles = StyleSheet.create({
   drawerWidth: {
     width: 30,
     color: 'green'
-  }
+  },
+
+  container: {
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    backgroundColor: 'white',
+},
+backgroundVideo: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    marginTop: -165
+},
+overlayContainer: {
+  position: 'absolute',
+  bottom: 50, // Adjust to position the image correctly
+  alignItems: 'center',
+},
+overlayContainer2: {
+  alignItems: 'center',
+  top: 110
+},
+image: {
+  width: 400,  // Adjust as needed
+  height: 400, // Adjust as needed
+  resizeMode: 'contain',
+},
+image2: {
+  width: 300,  // Adjust as needed
+  height: 300, // Adjust as needed
+  resizeMode: 'contain',
+},
 });
