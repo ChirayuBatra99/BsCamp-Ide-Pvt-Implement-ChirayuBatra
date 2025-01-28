@@ -15,7 +15,7 @@ import React, { useState } from 'react';
     const renderLabel = () => {
       if (value || isFocus) {
         return (
-          <Text style={[styles.label, isFocus && { color: 'white' }]}>
+          <Text style={[styles.label, isFocus && { color: 'blue' }]}>
             Destination Place
           </Text>
         );
@@ -27,7 +27,7 @@ import React, { useState } from 'react';
       <View style={styles.container}>
         {renderLabel()}
         <Dropdown
-          style={[styles.dropdown, isFocus && { borderColor: 'yellow' }]}
+          style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
           placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={styles.selectedTextStyle}
           inputSearchStyle={styles.inputSearchStyle}
@@ -60,18 +60,18 @@ import React, { useState } from 'react';
     },
     dropdown: {
       height: 50,
-      borderColor: 'brown',
+      borderColor: 'white',
       borderWidth: 3,
       borderRadius: 8,
       paddingHorizontal: 8,
-      color: 'brown'
+      color: 'white'
     },
     icon: {
       marginRight: 5,
     },
     label: {
       position: 'absolute',
-      backgroundColor: 'black',
+      backgroundColor: 'pink',
       left: 22,
       top: 8,
       zIndex: 999,

@@ -46,7 +46,7 @@ const Grid = () => {
             <View style={styles.datesabove}>
               {timeSlots.map((e, key) => (
                 <View key={key} style={styles.hourLabelsContainer}>
-                  <Text> {e} Jan</Text>
+                  <Text style={styles.monthTextStyle}> {e} Jan</Text>
                   <View style={styles.line} />
                 </View>
               ))}
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: 'pink',
+    borderBottomColor: 'black',
   },
   gridContainer: {
     flexDirection: 'column',
@@ -113,12 +113,14 @@ const styles = StyleSheet.create({
   hourLabelsContainer: {
     width: 50,
     backgroundColor: '#f0f0f0',
+    backgroundColor: 'black'
   },
   line: {
     width: 1,
     height: '100%',
     backgroundColor: 'black',
     position: 'absolute',
+    // backgroundColor: 'white'
   },
   gridRow: {
     flexDirection: 'row',
@@ -133,7 +135,12 @@ const styles = StyleSheet.create({
   },
   lefthour: {
     fontSize: 14,
+    color: 'white'
   },
+  monthTextStyle: {
+    color: 'white',
+    fontSize: 15
+  }
 });
 
 export default Grid;

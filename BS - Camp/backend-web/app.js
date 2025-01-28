@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const { socketHandler, routes } = require('./routes/socket');
 const http = require('http');
 
-const PORT = 8005;
+const PORT = process.env.PORT;
 
 const { Server } = require('socket.io');
 

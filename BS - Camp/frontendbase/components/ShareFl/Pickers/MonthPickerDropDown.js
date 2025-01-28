@@ -71,42 +71,46 @@ export default MonthPickerDropDown;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'pink',
-        padding: 25,
-    },
-    dropdown: {
+        backgroundColor: 'black',
+        padding: 10,
+      },
+      dropdown: {
         height: 50,
-        borderColor: 'black',
+        borderColor: 'white',
         borderWidth: 3,
         borderRadius: 8,
         paddingHorizontal: 8,
-    },
-    icon: {
+        color: 'white'
+      },
+      icon: {
         marginRight: 5,
-    },
-    label: {
+      },
+      label: {
         position: 'absolute',
-        backgroundColor: 'pink',
-        color:'black',
-        left: 40,
-        top: 8,
+        backgroundColor: 'black',
+        left: 22,
+        top: 1,
         zIndex: 999,
         paddingHorizontal: 8,
+        fontSize: 14,
+        color: 'white'
+
+      },
+      placeholderStyle: {
         fontSize: 16,
-    },
-    placeholderStyle: {
+        color: 'white'
+  
+      },
+      selectedTextStyle: {
         fontSize: 16,
-        marginTop: 12,
-    },
-    selectedTextStyle: {
-        fontSize: 16,
-    },
-    iconStyle: {
+        color: 'white'
+      },
+      iconStyle: {
         width: 20,
         height: 20,
-    },
-    inputSearchStyle: {
+      },
+      inputSearchStyle: {
         height: 40,
         fontSize: 16,
-    },
+      },
 });

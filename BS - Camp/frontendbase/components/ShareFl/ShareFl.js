@@ -26,7 +26,7 @@ export default function ShareFl() {
           {/* <DestinationDropDown /> */}
           {/* <MonthPickerDropDown />
           <DestinationDropDown /> */}
-          <Grid />
+          {/* <Grid /> */}
           
         </AppProvider>
       </View>
@@ -37,7 +37,7 @@ export default function ShareFl() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: 'pink', 
+    backgroundColor: 'black', 
 
     // Optional: Add a background color
   },

@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
   import { StyleSheet, Text, View } from 'react-native';
   import { Dropdown } from 'react-native-element-dropdown';
-  // import AntDesign from '@expo/vector-icons/AntDesign';
 
-  const data = [
-    { label: 'Ai', value: 'airport' },
-    { label: 'R', value: 'railway' },
-  ];
+  const timeSlots = Array.from({ length: 24 }, (_, i) => `${i}-${i + 1}`); // Generate time ranges: 0-1, 1-2, etc.
 
-  const DestinationDropDown = () => {
+
+  const TimeRangeDropDown = () => {
     const [value, setValue] = useState(null);
     const [isFocus, setIsFocus] = useState(false);
+    const [timeRange, setTimeRange] = useState('');
 
     const renderLabel = () => {
       if (value || isFocus) {
         return (
-          <Text style={[styles.label, isFocus && { color: 'white' }]}>
+          <Text style={[styles.label, isFocus && { color: 'blue' }]}>
             Destination Place
           </Text>
         );
@@ -27,12 +25,12 @@ import React, { useState } from 'react';
       <View style={styles.container}>
         {renderLabel()}
         <Dropdown
-          style={[styles.dropdown, isFocus && { borderColor: 'yellow' }]}
+          style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
           placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={styles.selectedTextStyle}
           inputSearchStyle={styles.inputSearchStyle}
           iconStyle={styles.iconStyle}
-          data={data}
+          data={timeSlots}
           search
           maxHeight={300}
           labelField="label"
@@ -51,7 +49,7 @@ import React, { useState } from 'react';
     );
   };
 
-  export default DestinationDropDown;
+  export default TimeRangeDropDown;
 
   const styles = StyleSheet.create({
     container: {
@@ -60,18 +58,18 @@ import React, { useState } from 'react';
     },
     dropdown: {
       height: 50,
-      borderColor: 'brown',
+      borderColor: 'white',
       borderWidth: 3,
       borderRadius: 8,
       paddingHorizontal: 8,
-      color: 'brown'
+      color: 'white'
     },
     icon: {
       marginRight: 5,
     },
     label: {
       position: 'absolute',
-      backgroundColor: 'black',
+      backgroundColor: 'pink',
       left: 22,
       top: 8,
       zIndex: 999,

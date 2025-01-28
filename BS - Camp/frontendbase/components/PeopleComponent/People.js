@@ -60,7 +60,7 @@ const People = () => {
         return `${formatHour(startHour)} - ${formatHour(endHour)}`;
     }
     return (
-        <KeyboardAvoidingView style={{flex: 1, backgroundColor: 'green'}}>
+        <KeyboardAvoidingView style={{flex: 1, backgroundColor: 'black'}}>
         <View style={styles.container}>
             {/* <View style={styles.headersTimeDay}> */}
                 <Text style={styles.headerDayText}>{formatDate(day)}</Text>
@@ -91,11 +91,13 @@ const styles = StyleSheet.create({
     headerDayText: {
         fontSize: 16,
         fontWeight: 'bold',
+        color: 'white'
         // width: '25%'
     },
     headerTimeText: {
         fontSize: 22,
         fontWeight: 'bold',
+        color: 'white'
         // width: '40%'
     },
     headersTimeDay: {

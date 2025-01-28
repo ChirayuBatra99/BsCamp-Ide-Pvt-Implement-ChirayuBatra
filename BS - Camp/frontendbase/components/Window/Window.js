@@ -86,6 +86,6 @@ const styles = StyleSheet.create({
   box: {
     height: 48,
     width: 48,
-    backgroundColor: 'black'
+    backgroundColor: 'white'
   }
 })
