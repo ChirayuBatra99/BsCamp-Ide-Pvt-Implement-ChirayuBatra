@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ActivityIndicator, Image } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, Image, Button } from 'react-native';
 import React, { useContext, useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -63,7 +63,7 @@ const StackNavigator = () => {
         // drawerActiveBackgroundColor: 'blue', 
         drawerStyle: {
           width: '60%',
-          // backgroundColor: '#c6cbef',
+          backgroundColor: 'black',
 
         } ,
         
@@ -82,6 +82,27 @@ const StackNavigator = () => {
               </View>
 
               <DrawerItem
+                label={'ShareFl'}
+                onPress={() => {
+                  props.navigation.navigate('GridScreen');
+                  focused='GridScreen'
+                }}
+                style={{
+                  // backgroundColor: '#9dd3c8',
+                  borderColor: 'white',
+                  borderWidth: 2,
+                  opacity: 1,
+                  width: '100%',
+                  marginBottom: 5,
+                }}
+                focused={focused==='GridScreen'}
+                inactiveBackgroundColor='black'
+                activeBackgroundColor='white'
+                inactiveTintColor='yellow'
+                activeTintColor='black' // text color
+              />
+              
+              <DrawerItem
                 label={'Placebid'}
                 onPress={() => {
                   props.navigation.navigate('Placebid');
@@ -89,18 +110,21 @@ const StackNavigator = () => {
                 }}
                 style={{
                   // backgroundColor: '#9dd3c8',
-                  borderColor: 'black',
+                  borderColor: 'white',
                   borderWidth: 2,
-                  opacity: 0.6,
+                  opacity: 1,
+                  width: '100%',
+                  marginBottom: 5,
+                  justifyContent: 'center'
                 }}
                
                 // focused={focused === SCREENS.PROFILE}
                 // drawerActiveTintColor= {'yellow'},
                 focused={focused==='Placebid'}
-                inactiveBackgroundColor='green'
+                inactiveBackgroundColor='black'
                 activeBackgroundColor='white'
                 inactiveTintColor='yellow'
-                activeTintColor='pink'
+                activeTintColor='black' // text color
               />
                <DrawerItem
                 label={'Profile'}
@@ -110,38 +134,23 @@ const StackNavigator = () => {
                 }}
                 style={{
                   // backgroundColor: '#9dd3c8',
-                  borderColor: 'black',
+                  borderColor: 'white',
                   borderWidth: 2,
-                  opacity: 0.6,
+                  opacity: 1,
+                  width: '100%',
+                  marginBottom: 5
                 }}
                 focused={focused==='Profile'}
-                inactiveBackgroundColor='green'
+                inactiveBackgroundColor='black'
                 activeBackgroundColor='white'
                 inactiveTintColor='yellow'
-                activeTintColor='pink'
+                activeTintColor='black' // text color
 
               />
-              <DrawerItem
-                label={'ShareFl'}
-                onPress={() => {
-                  props.navigation.navigate('GridScreen');
-                  focused='GridScreen'
-                }}
-                style={{
-                  // backgroundColor: '#9dd3c8',
-                  borderColor: 'black',
-                  borderWidth: 2,
-                  opacity: 0.6,
-                }}
-                focused={focused==='GridScreen'}
-                inactiveBackgroundColor='green'
-                activeBackgroundColor='white'
-                inactiveTintColor='yellow'
-                activeTintColor='pink'
-              />
+              
 
                <DrawerItem
-                label={'Login'}
+                label={'Logout'}
                 onPress={() => {
                   props.navigation.navigate('GridScreen');
                   // focused='GridScreen'
@@ -157,26 +166,39 @@ const StackNavigator = () => {
                 }}
                 style={{
                   // backgroundColor: '#9dd3c8',
-                  borderColor: 'black',
+                  borderColor: 'white',
                   borderWidth: 2,
-                  opacity: 0.6,
+                  opacity: 1,
+                  width: '100%',
+                  marginBottom: 5,
+                  // flex:1,
                 }}
                 // focused={focused==='GridScreen'}
-                inactiveBackgroundColor='green'
+                inactiveBackgroundColor='black'
                 activeBackgroundColor='white'
                 inactiveTintColor='yellow'
-                activeTintColor='pink'
+                activeTintColor='black' // text color
               />
 
             </DrawerContentScrollView>
           )
         }}
       >
-                                                                            {/* Bid for c*b share */}
-        <Drawer.Screen name="Placebid" component={PlaceBid} options={{ title: 'Place B' }} /> 
-        <Drawer.Screen name="GridScreen" component={ShareFl} options={{title: 'Bscmap'}} />
+                                                                          
+        <Drawer.Screen name="GridScreen" component={ShareFl} options={{title: 'Bscmap',
+          headerRight: () => (
+            <Button 
+              onPress={() => alert('Button Pressed!')} 
+              title="Click Me" 
+              color="blue" 
+            />
+          ),
+        }} />
+        <Drawer.Screen name="Placebid" component={PlaceBid} options={{ title: 'Place B' }} />    
+                                                                                           {/* Bid for c*b share and dont keep this in same line of code, causes error*/}
         <Drawer.Screen name="Profile" component={Profile} />
         <Drawer.Screen name="Login" component={Login} options={{ title: 'Login' }} /> 
+
 
       </Drawer.Navigator>
     )

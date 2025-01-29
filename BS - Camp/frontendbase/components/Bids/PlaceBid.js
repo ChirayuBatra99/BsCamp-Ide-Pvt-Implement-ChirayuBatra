@@ -71,13 +71,18 @@ const PlaceBid = () => {
       <Text style={styles.heading}>B Page</Text>
 
       {/* Date Picker */}
-      <View style={styles.dateContainer1}>
+      <View style={styles.dateContainer3}>
         <Text style={styles.label}>Select a Day:</Text>
-        <TouchableOpacity onPress={() => setShowDatePicker(true)}>
+        {/* <View */}
+         <TouchableOpacity 
+            styles={{marginRight: 30, marginLeft: 20, backgroundColor: 'green'}}
+        onPress={() => setShowDatePicker(true)}>
           <Text style={styles.dateText}>
             {selectedDate.toISOString().split('T')[0]}
           </Text>
-        </TouchableOpacity>
+        {/* </View> */}
+                </TouchableOpacity>
+
       </View>
 
 
@@ -130,9 +135,10 @@ const PlaceBid = () => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: '10%',
     backgroundColor: 'black',
     flex: 1,
+    // marginRight: 
   },
   heading: {
     fontSize: 24,
@@ -166,7 +172,12 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   dateText: {
-    color: 'white'
+    color: 'white',
+    borderWidth: 3,
+    borderColor: 'white',
+    height: 45,
+    width: 115,
+    borderRadius: 9
   },
   dateContainer: {
     display: 'flex',
@@ -176,11 +187,13 @@ const styles = StyleSheet.create({
     marginRight: '20%',
     alignItems: 'center'
   },
-  dateContainer1: {
-    // display: 'flex',
-    // flexDirection: 'row',
-    // justifyContent: 'space-between',
-    // marginRight: '10%',
+  dateContainer3: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginRight: '20%',
+    alignItems: 'center',
+
   }
 });
 

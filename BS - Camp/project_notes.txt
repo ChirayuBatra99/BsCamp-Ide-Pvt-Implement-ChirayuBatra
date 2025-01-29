@@ -79,3 +79,8 @@ after line 10
 
 ****** Campus CabMate
 Think of making a create group option in chats
+
+
+
+AWS -> RDS has been made and is working. Now the next step is to simpley deploy the backend code on the Elastic Beanstalk.
+       But before that you need to make an IAM on AWS,(see tutorial), otherwise the backend gonna crash with errors like service roles.

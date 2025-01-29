@@ -26,7 +26,7 @@ export default function ShareFl() {
           {/* <DestinationDropDown /> */}
           {/* <MonthPickerDropDown />
           <DestinationDropDown /> */}
-          {/* <Grid /> */}
+          <Grid />
           
         </AppProvider>
       </View>
