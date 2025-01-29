@@ -86,6 +86,12 @@ const ChatRoom = () => {
             setTimeout(() => {
                 fetchMessages();
             }, 100);
+
+
+            // Add to friends list as well
+            await axios.post("http://10.0.2.2:8005/makefriends", {
+                 senderId, receiverId
+            });
         }
         catch (error) {
             console.log("errorBRO", error);

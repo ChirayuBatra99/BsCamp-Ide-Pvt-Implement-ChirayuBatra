@@ -17,6 +17,7 @@ require('./database/dbmongo');
 
 const User = require("./models/user");
 const Message = require("./models/message");
+const Friends = require("./models/friendList");
 
 const app = express();
 

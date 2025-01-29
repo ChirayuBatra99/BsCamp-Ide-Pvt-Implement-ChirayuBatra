@@ -2,6 +2,8 @@ const express = require('express');
 const http = require('http');
 const User = require('../models/user');
 const Message = require('../models/message');
+const Friends = require('../models/friendList');
+ 
 
 // const { Server } = require('socket.io');
 
@@ -46,9 +48,6 @@ const socketHandler = (server, io) => {
 
 const routes = (app, io) => {
  
-
- 
-
   app.post('/sendMessage', async (req, res) => {
     try {
       const { senderId, receiverId, message } = req.body;
@@ -71,10 +70,8 @@ const routes = (app, io) => {
       if (receiverSocketId) {
         console.log('emitting recieveMessage event to the reciver', receiverId);
         io.to(receiverSocketId).emit('newMessage', newMessage);
-
         // io.to(receiverSocketId).emit('receiveMessage', { senderId, message });
         // this one bro
-
       } else {
         console.log('Receiver socket ID not found.--', receiverSocketId);
       }
@@ -98,7 +95,37 @@ const routes = (app, io) => {
     }
   });
 
+  app.post('/makefriends', async(req, res) => {
+    try{
+        const {senderId, receiverId} = req.body;
+        
+        let sender = await Friends.findOne({ person: senderId });
+        if (!sender) {
+            // Create a new entry for sender if not found
+            sender = new Friends({ person: senderId, friends: [receiverId] });
+        } else if (!sender.friends.includes(receiverId)) {
+            // Add receiverId to sender's friends if not already present
+            sender.friends.push(receiverId);
+        }
+        await sender.save();
 
+        // Handle receiverId
+        let receiver = await Friends.findOne({ person: receiverId });
+        if (!receiver) {
+            // Create a new entry for receiver if not found
+            receiver = new Friends({ person: receiverId, friends: [senderId] });
+        } else if (!receiver.friends.includes(senderId)) {
+            // Add senderId to receiver's friends if not already present
+            receiver.friends.push(senderId);
+        }
+        await receiver.save();
+
+        res.status(200).json({ message: "Friends updated successfully" });
+
+    } catch(error) {
+        console.log("error broski", error.message);
+    }
+  });
   // Add more routes as needed...
 };
 

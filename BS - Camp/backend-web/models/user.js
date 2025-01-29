@@ -5,6 +5,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    userId: {
+        type: Number,
+        required: true,
+    },
     password: {
         type: String,
         required: true,
@@ -15,12 +19,12 @@ const userSchema = new mongoose.Schema({
     },
     token: {
         type: String,
-        
     },
     friends: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User',
+            type: Number,
+            // type: mongoose.Schema.Types.ObjectId,
+            // ref: 'User',
         },
     ],
 });
