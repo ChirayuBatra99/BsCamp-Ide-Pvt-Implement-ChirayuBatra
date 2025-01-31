@@ -28,6 +28,9 @@ const PlaceBid = () => {
   };
 
   const handleSubmit = async () => {
+
+    console.log(timeRange,",");
+    
     const formattedTimeRange = timeRange
       .split('-')
       .map((time) => time.padStart(2, '0'))
@@ -99,7 +102,7 @@ const PlaceBid = () => {
       <View style={styles.dateContainer1}>
 
         <Text style={styles.label}>Time Range:</Text>
-        <TimeRangeDropDown />
+        <TimeRangeDropDown onTimeChange = {setTimeRange}/>
         {/* <Picker
           selectedValue={timeRange}
           style={styles.picker}
@@ -115,7 +118,7 @@ const PlaceBid = () => {
       {/* Destination Input */}
       <View style={styles.dateContainer1}>
         <Text style={styles.label}>Destination:</Text>
-        <DestinationPicker />
+        <DestinationPicker onDestinationChange= {setDestination}/>
         {/* <TextInput
         style={styles.input}
         placeholder="Enter destination"

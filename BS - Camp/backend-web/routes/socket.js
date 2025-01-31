@@ -72,6 +72,10 @@ const routes = (app, io) => {
         io.to(receiverSocketId).emit('newMessage', newMessage);
         // io.to(receiverSocketId).emit('receiveMessage', { senderId, message });
         // this one bro
+
+
+
+        // yes this means just update in the database, i mean if this if condition is false, then just simply edit in User.db, no need of sockets
       } else {
         console.log('Receiver socket ID not found.--', receiverSocketId);
       }

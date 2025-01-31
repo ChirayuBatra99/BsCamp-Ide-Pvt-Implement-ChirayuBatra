@@ -189,7 +189,7 @@ const StackNavigator = () => {
           headerRight: () => (
             <Button 
               onPress={() => alert('Button Pressed!')} 
-              title="Click Me" 
+              title="Messages" 
               color="blue" 
             />
           ),
@@ -256,12 +256,12 @@ const StackNavigator = () => {
                     style={styles.image2}
               />
         </View>
-      {/* <View style={styles.overlayContainer}>
+      <View style={styles.overlayContainer}>
                 <Image
                     source={require('../svgs/texi.png')} // Replace with your image file
                     style={styles.image}
                 />
-      </View> */}
+      </View>
   </View>
     )
   }

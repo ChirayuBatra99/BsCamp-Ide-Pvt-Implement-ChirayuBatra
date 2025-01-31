@@ -84,7 +84,7 @@ const ProfileBox = () => {
             style={styles.imageStyles}
       />
       </View>
-      <Button title="gallery bro" onPress={() => openGallery()} />
+      <Button title="profile pic" onPress={() => openGallery()} />
     </View>
   )
 }

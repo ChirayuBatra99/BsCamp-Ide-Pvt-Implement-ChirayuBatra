@@ -48,7 +48,7 @@ export default function NavigationBar() {
     <View style={styles.container}>
       {/* <Button title='Logout' onPress={handleLogOut} /> */}
       <PickUpDropDown />
-      <DestinationDropDown />
+      <DestinationDropDown onDestination={setDestinationType} />
       {/* <Newdropdown /> */}
 
       <View style={{display: 'flex', flexDirection: 'row', justifyContent:'center', alignItems:'center'}}>

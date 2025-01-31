@@ -82,6 +82,7 @@ const ChatRoom = () => {
                 message
             });
             socket.emit('sendMessage', { senderId, receiverId, message });
+            // the above line is preventing the action of sending if i click send button
             setMessage('');
             setTimeout(() => {
                 fetchMessages();

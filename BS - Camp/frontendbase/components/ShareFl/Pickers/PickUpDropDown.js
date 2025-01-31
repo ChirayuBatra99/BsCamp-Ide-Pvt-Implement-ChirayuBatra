@@ -4,18 +4,9 @@ import { Dropdown } from 'react-native-element-dropdown';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const data = [
-  { label: 'Item 1', value: '1' },
-  { label: 'Item 2', value: '2' },
-  { label: 'Item 3', value: '3' },
-  { label: 'Item 4', value: '4' },
-  { label: 'Item 5', value: '5' },
-  { label: 'Item 6', value: '6' },
-  { label: 'Item 7', value: '7' },
-  { label: 'Item 8', value: '8' },
-  { label: 'Item 9', value: '9' },
-  { label: 'Item 10', value: '10' },
-  { label: 'Item 11', value: '11' },
-  { label: 'Item 12', value: '12' },
+  { label: 'Campus', value: 'campus' },
+  { label: 'Ai', value: 'airport' },
+  { label: 'R', value: 'railway' },
 ];
 
 const PickUpDropDown = () => {
@@ -51,11 +42,12 @@ const PickUpDropDown = () => {
       maxHeight={300}
       labelField="label"
       valueField="value"
-      placeholder="Select item"
+      placeholder="Select Pickup"
       searchPlaceholder="Search..."
       value={value}
       onChange={item => {
         setValue(item.value);
+        // onPickup(item.value);
       }}
       // renderLeftIcon={() => (
       //   <MaterialIcons style={styles.icon} color="black" name="Safety" size={20} />
@@ -113,7 +105,8 @@ const styles = StyleSheet.create({
   },
   selectedTextStyle: {
     fontSize: 16,
-    backgroundColor: 'white'
+    backgroundColor: 'black',
+    color: 'white'
   },
   iconStyle: {
     width: 20,
@@ -127,7 +120,7 @@ const styles = StyleSheet.create({
     // borderRadius: 5,
     // borderWidth: 1,
     borderColor: '#52313c',
-    color: 'white'
+    color: 'black'
 
   },
 });

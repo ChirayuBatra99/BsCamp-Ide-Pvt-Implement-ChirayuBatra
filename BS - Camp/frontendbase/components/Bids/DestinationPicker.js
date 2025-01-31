@@ -8,7 +8,7 @@ import React, { useState } from 'react';
     { label: 'R', value: 'railway' },
   ];
 
-  const DestinationDropDown = () => {
+  const DestinationDropDown = ({onDestinationChange}) => {
     const [value, setValue] = useState(null);
     const [isFocus, setIsFocus] = useState(false);
 
@@ -45,6 +45,7 @@ import React, { useState } from 'react';
           onChange={item => {
             setValue(item.value);
             setIsFocus(false);
+            onDestinationChange(item.value);
           }}
         />
       </View>
