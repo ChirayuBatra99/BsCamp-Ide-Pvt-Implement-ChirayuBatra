@@ -131,4 +131,3 @@ Sell to campuses subject to money and enable all these functionalities to their 
 service. Also include other services like other campus services, like you wrote in whatsapp
 
 
-// Testing a commit
