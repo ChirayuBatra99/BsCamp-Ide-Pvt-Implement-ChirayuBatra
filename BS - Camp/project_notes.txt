@@ -129,3 +129,6 @@ bid automatically, after the deal between them is confirmed.
 Premium membership:
 Sell to campuses subject to money and enable all these functionalities to their all students, once they purchase your 
 service. Also include other services like other campus services, like you wrote in whatsapp
+
+
+// Testing a commit
