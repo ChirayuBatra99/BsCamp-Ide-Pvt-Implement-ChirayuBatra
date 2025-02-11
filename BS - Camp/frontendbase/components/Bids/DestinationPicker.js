@@ -4,8 +4,8 @@ import React, { useState } from 'react';
   // import AntDesign from '@expo/vector-icons/AntDesign';
 
   const data = [
-    { label: 'Ai', value: 'airport' },
-    { label: 'R', value: 'railway' },
+    { label: 'Ai', value: 'Ai' },
+    { label: 'R', value: 'R' },
   ];
 
   const DestinationDropDown = ({onDestinationChange}) => {

@@ -8,37 +8,46 @@ import ImagePicker from 'react-native-image-crop-picker';
 const ProfileBox = () => {
 
       const baseURL = 'http://10.0.2.2:8005';
-      const { token } = useContext(AuthContext);
+      const { token, userId } = useContext(AuthContext);
       const [phone, setPhone] = useState('');
       const [tok, setTok] = useState('');
 
       const [profileImage, setProfileImage] = useState();
-
-      const openCamera = async() => {
-          try{
-            await ImagePicker.openCamera({
-              width: 300,
-              height: 400,
-              cropping: true,
-            }).then(image => {
-              console.log(image);
-              setProfileImage(image);
-            });
-          }
-          catch(error) {
-            console.log("error", error.message);            
-          }
-      };
+      const [imagesixfour, setImagesixfour] = useState('');
+      // const openCamera = async() => {
+      //     try{
+      //       await ImagePicker.openCamera({
+      //         width: 300,
+      //         height: 400,
+      //         cropping: true,
+      //       }).then(image => {
+      //         console.log(image);
+      //         setProfileImage(image);
+      //       });
+      //     }
+      //     catch(error) {
+      //       console.log("error", error.message);            
+      //     }
+      // };
 
       const openGallery = async() => {
         try{
         await ImagePicker.openPicker({
           width: 300,
           height: 400,
-          cropping: true
+          cropping: true,
+          includeBase64: true,
+          cropperCircleOverlay: true,
+          avoidEmptySpaceAroundImage: true,
+          freeStyleCropEnabled: true,
+
         }).then(image => {
           console.log(image);
           setProfileImage(image);
+          const data = `data:${image.mime};base64,${image.data}`;
+          console.log(data);
+          
+          setImagesixfour(data);
         });
       }
       catch(error) {
@@ -46,41 +55,73 @@ const ProfileBox = () => {
       }
       };
 
+
+      // Upload in mongodb
       useEffect(() => {
-        const fetchProfile = async () => {
-          try {
-            const res = await fetch(`${baseURL}/veri`, {
-              method: "POST", // Changed to POST
+        try{
+          const uploadImage = async() => {
+            const res= await fetch(`${baseURL}/uploadImage`, {
+              method: 'POST',
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify({ token }) // Send token in body
-            });
-    
-            if (!res.ok) {
-              throw new Error(`HTTP error! Status: ${res.status}`);
-            }
-    
-            const data = await res.json();
-            console.log("Received Data:", data);
-            setPhone(data)
-          } catch (error) {
-            console.log("Error fetching profile:", error.message);
+              body: JSON.stringify({ userId, imagesixfour})
+            })
+            if(res.status==201)
+                console.log("Image uplaoded success");
+            else  
+              console.log("code",res.status);
+            
           }
-        };
+          uploadImage();
+      }
+      catch(error) {
+        console.log("error", error.message);
+        
+      }
+      }, [imagesixfour]);
+
+
+
+
+
+
+      // useEffect(() => {
+      //   const fetchProfile = async () => {
+      //     try {
+      //       const res = await fetch(`${baseURL}/veri`, {
+      //         method: "POST", // Changed to POST
+      //         headers: {
+      //           "Content-Type": "application/json",
+      //         },
+      //         body: JSON.stringify({ token }) // Send token in body
+      //       });
     
-        fetchProfile();
-      }, []);
+      //       if (!res.ok) {
+      //         throw new Error(`HTTP error! Status: ${res.status}`);
+      //       }
+    
+      //       const data = await res.json();
+      //       console.log("Received Data:", data);
+      //       setPhone(data)
+      //     } catch (error) {
+      //       console.log("Error fetching profile:", error.message);
+      //     }
+      //   };
+    
+      //   fetchProfile();
+      // }, []);
 
   
 
   return (
     <View>
-      <Text>{phone} </Text>
+      <Text style={{color: 'white'}}>{phone} </Text>
       <View style= {styles.imageView}>
          <Image
             resizeMode='contain'
-            source={{uri:profileImage?.path}}
+            // source={{uri:profileImage?.path}}
+            source={{uri: imagesixfour}}
             style={styles.imageStyles}
       />
       </View>
@@ -89,7 +130,7 @@ const ProfileBox = () => {
   )
 }
 
-export default ProfileBox
+export default ProfileBox;
 
 const styles = StyleSheet.create({
   imageStyles: {
@@ -105,6 +146,22 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

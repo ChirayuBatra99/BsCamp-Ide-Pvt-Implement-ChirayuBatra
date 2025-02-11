@@ -4,6 +4,9 @@ const friendListSchema = new mongoose.Schema({
     person: {
         type: Number,
     },
+    dpphoto: {
+        type: String,
+    },
     friends: [
         {
             type: Number,

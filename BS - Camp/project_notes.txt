@@ -32,11 +32,17 @@ chirayubatra@Chirayus-MacBook-Air android % ./gradlew assembleRelease
 
 
 
+You can get the gender of the person, at the time the person is placing bid
+
+
 
 Trave& SHM to be released togetehr, not just solo Travel thing.
 
 
 React native basic running app:
+
+
+req, proto
 
 npm i
 Npx react-native init qwkdjn
@@ -84,3 +90,42 @@ Think of making a create group option in chats
 
 AWS -> RDS has been made and is working. Now the next step is to simpley deploy the backend code on the Elastic Beanstalk.
        But before that you need to make an IAM on AWS,(see tutorial), otherwise the backend gonna crash with errors like service roles.
+
+
+
+
+
+
+Abstract:
+
+When the students of a typical college in India, plan to travel to
+their homes, they go by either train or by air, and to reach the 
+airport or the railway station, they prefer using cab or taxi services.
+But students don't prefer to travel alone, and they need companions 
+who can share cab with them and can split the bill, saving them money.
+And in order to carpool, college campuses generally have a whatsapp
+groups where they place their bids like, "Anyone travelling to XYZ 
+destination, on 1st December, around 6 pm from campus", and the
+other students come manually filter out the person who can be their
+companion in a dozens of chats. And in case a lot of people are
+travelling on a particular day, the bid chat goes upwards in chats,
+and gets hard to find out. Leading to inefficiency, manual work. 
+
+A solution to that problem is an application, which will have the time
+slots day wise, and a student can come place his bid, about the time, 
+place and destination he/she is travelling to, and his bid will become
+publically visible to all other users in the campus. Such that if a
+new user comes, he just enters his 'from' destination, 'to' destination
+, and the month of his travel, he will get to see all other people, 
+who are travelling in the month on any day and any slot of time,
+in an organised manner. And he can go communicate directly with the 
+user using inbuilt chats and phone call feature, and can confirm 
+their cab-mate within the app itself. The app itself will remove their 
+bid automatically, after the deal between them is confirmed.
+
+
+
+
+Premium membership:
+Sell to campuses subject to money and enable all these functionalities to their all students, once they purchase your 
+service. Also include other services like other campus services, like you wrote in whatsapp

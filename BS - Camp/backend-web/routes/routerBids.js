@@ -8,13 +8,14 @@ const { generateAuthToken } = require("../utils/authToken");
 router.get("/bidemojis", async (req, res) => {
     try {
         const { time, day, destination, userId } = req.query;
-        // console.log(day, " ", time, " ", destination);
+        console.log(day, " ", time, " ", destination);
         if (!time || !day || !destination) {
             return res.status(422).json({ error: "Enter all fields." });
         }
         // console.log(userId);
         
-        const query1 = "SELECT COUNT(user) FROM bids WHERE day=? AND time=? AND destination=? AND userid!=?";
+        
+        const query1 = "SELECT COUNT(user) FROM bids WHERE day=? AND time=? AND destination=? ";
         db.query(query1, [day, time, destination, userId], async (err, result) => {
             if (err) return res.status(500).send(err);
             if (result.length > 0)

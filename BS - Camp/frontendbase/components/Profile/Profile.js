@@ -1,7 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Image, Button } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../AuthContext';
 import { useSafeAreaFrame } from 'react-native-safe-area-context';
+
+import {img} from "./imageSample";
 
 const Profile = () => {
 
@@ -40,13 +42,40 @@ const Profile = () => {
 
 
   return (
-    <View>
-      <Text>{phone} </Text>
-      <Text>{userId}</Text>
-    </View>
+    // <View>
+    //   <Text>{phone} </Text>
+    //   <Text>{userId}</Text>
+    // </View>
+
+        <View>
+          <Text style={{color: 'black'}}>{phone} </Text>
+          <View style= {styles.imageView}>
+             <Image
+                resizeMode='contain'
+                // source={{uri:profileImage?.path}}
+                source={{uri: img}}
+                style={styles.imageStyles}
+          />
+          </View>
+          <Button title="profile pic" onPress={() => openGallery()} />
+        </View>
+
   )
 }
 
 export default Profile
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  imageStyles: {
+    height: '100%',
+    width: '100%',
+    // borderRadius: 200, // Half of width/height for a circular image
+    overflow: "hidden",
+  },
+  imageView: {
+    height: 150,
+    width: 150,
+    borderRadius: 0, // Same as imageStyles
+    overflow: "hidden",
+  }
+});

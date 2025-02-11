@@ -8,7 +8,7 @@ export default function Window({ hour, date, destination, month, year }) {
   const navigation = useNavigation();
   
   const emojis = [
-    "😎","👦🏻", "👧🏼", "👦🏻", "👦🏻", "👦🏻", 
+    "👤", "😎","👦🏻", "👧🏼", "👦🏻", "👦🏻", "👦🏻", 
     "👧🏻", "👦🏼", "👧🏻", "👧🏼", "👦🏼"  
   ];
   

@@ -7,6 +7,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import ProfileBox from '../components/Profile/ProfileBox';
 import { NavigationContainer } from '@react-navigation/native';
 
+import AllMessagesButton from '../components/Buttons/AllMessagesButton';
+
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 
 import Video from 'react-native-video';
@@ -185,13 +187,14 @@ const StackNavigator = () => {
         }}
       >
                                                                           
-        <Drawer.Screen name="GridScreen" component={ShareFl} options={{title: 'Bscmap',
+        <Drawer.Screen name="GridScreen" component={ShareFl} options={{title: 'Find Travellers',
           headerRight: () => (
-            <Button 
-              onPress={() => alert('Button Pressed!')} 
-              title="Messages" 
-              color="blue" 
-            />
+            // <Button 
+            //   onPress={() => alert('Button Pressed!')} 
+            //   title="Messages" 
+            //   color="blue" 
+            // />
+            <AllMessagesButton />
           ),
         }} />
         <Drawer.Screen name="Placebid" component={PlaceBid} options={{ title: 'Place B' }} />    
