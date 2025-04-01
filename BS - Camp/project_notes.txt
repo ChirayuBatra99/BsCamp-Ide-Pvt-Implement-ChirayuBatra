@@ -131,3 +131,7 @@ Sell to campuses subject to money and enable all these functionalities to their 
 service. Also include other services like other campus services, like you wrote in whatsapp
 
 
+
+
+
+--------->>>>> The contents in babel.config.json are really importnat for react re animated package
