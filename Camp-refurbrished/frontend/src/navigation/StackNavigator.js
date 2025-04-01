@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, ActivityIndicator, Image, Button } from 'react-
 import React, { useContext, useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { AuthContext } from '../AuthContext';
+import { AuthContext } from '../Context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ProfileBox from '../components/Profile/ProfileBox';
 import { NavigationContainer } from '@react-navigation/native';
@@ -241,18 +241,7 @@ const StackNavigator = () => {
   }
   if (loading) {
     return (
-      // <View style={styles.loadingContainer}>
-      //   <ActivityIndicator size="large" color="#0000ff" />
-      //   <Text>Loading...</Text>
-      // </View>
       <View style={styles.container}>
-      {/* <Video
-          source={require('../svgs/figma12.mp4')} // Your video file in assets
-          style={styles.backgroundVideo}
-          // resizeMode="cover"
-          // onEnd={() => navigation.replace('HomeScreen')} // Auto-navigate on video end
-          repeat={true} // Set true if you want a loop
-      /> */}
         <View style={styles.overlayContainer2}>
               <Image
                     source={require('../svgs/v.png')} // Replace with your image file

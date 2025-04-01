@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Platform, View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AuthContext } from '../../AuthContext';
+import { AuthContext } from '../../Context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
 
 

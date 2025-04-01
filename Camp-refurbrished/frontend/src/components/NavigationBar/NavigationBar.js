@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { AppContext } from '../context/AppContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AuthContext } from '../../AuthContext';
+import { AuthContext } from '../../Context/AuthContext';
 import DestinationDropDown from '../ShareFl/Pickers/DestinationDropDown';
 import MonthPickerDropDown from '../ShareFl/Pickers/MonthPickerDropDown';
 import PickUpDropDown from '../ShareFl/Pickers/PickUpDropDown';

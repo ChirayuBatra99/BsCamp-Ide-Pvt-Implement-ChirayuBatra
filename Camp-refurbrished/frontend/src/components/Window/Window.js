@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native'
 import React, { useState, useEffect, useContext } from 'react'
 import { useNavigation } from '@react-navigation/native';
-import { AuthContext } from '../../AuthContext';
+import { AuthContext } from '../../Context/AuthContext';
 
 export default function Window({ hour, date, destination, month, year }) {
 

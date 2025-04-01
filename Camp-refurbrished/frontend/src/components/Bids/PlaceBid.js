@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert, Platform, TouchableOpacity } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Picker } from '@react-native-picker/picker';
-import { AuthContext } from '../../AuthContext';
+import { AuthContext } from '../../Context/AuthContext';
 
 // import DestinationDropDown from '../ShareFl/Pickers/DestinationDropDown';
 import DestinationPicker from './DestinationPicker';

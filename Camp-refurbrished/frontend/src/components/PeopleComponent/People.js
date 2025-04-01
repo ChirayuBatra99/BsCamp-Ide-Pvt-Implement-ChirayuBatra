@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Image, Button, Alert, ScrollView, KeyboardAvoidingView } from 'react-native'
 import React, { useState, useEffect, useContext } from 'react'
 import peopleData from "./peopledata";
-import { AuthContext } from '../../AuthContext';
+import { AuthContext } from '../../Context/AuthContext';
 import { useRoute } from '@react-navigation/native';
 
 import Chat from '../Chating/Chat';

@@ -1,7 +1,7 @@
 import { View, Text, KeyboardAvoidingView, ScrollView, Pressable, TextInput, StyleSheet } from 'react-native'
 import React, { useContext, useEffect, useState, useLayoutEffect } from 'react';
 
-import { AuthContext } from '../../AuthContext';
+import { AuthContext } from '../../Context/AuthContext';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import axios from "axios";
 import { useSocketContext } from './SocketContext';

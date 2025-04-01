@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../AuthContext';
+import { AuthContext } from '../../Context/AuthContext';
 
 import ImagePicker from 'react-native-image-crop-picker';
 // import { Image } from 'react-native-svg';

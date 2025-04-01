@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, Text, View, TouchableOpacity } from 'react-nativ
 import React, { useState, useEffect, useContext } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
-import { AuthContext } from '../../AuthContext';
+import { AuthContext } from '../../Context/AuthContext';
 import axios from 'axios';
 
 const Chat = ({ item }) => {

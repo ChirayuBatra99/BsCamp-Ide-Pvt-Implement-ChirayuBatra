@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image, Button } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../AuthContext';
+import { AuthContext } from '../../Context/AuthContext';
 import { useSafeAreaFrame } from 'react-native-safe-area-context';
 
 import {img} from "./imageSample";

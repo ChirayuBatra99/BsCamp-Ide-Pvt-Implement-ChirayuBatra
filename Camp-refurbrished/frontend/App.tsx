@@ -1,16 +1,16 @@
-import Login from './components/LoginSignup/Login'
-// import Grid from './components/Grid/Grid'
-import ShareFl from './components/ShareFl/ShareFl'
-import NavigationBar from './components/NavigationBar/NavigationBar'
-import Signup from './components/LoginSignup/Signup'
-import PlaceBid from './components/Bids/PlaceBid'
+import Login from './src/components/LoginSignup/Login'
+// import Grid from './src/components/Grid/Grid'
+import ShareFl from './src/components/ShareFl/ShareFl'
+import NavigationBar from './src/components/NavigationBar/NavigationBar'
+import Signup from './src/components/LoginSignup/Signup'
+import PlaceBid from './src/components/Bids/PlaceBid'
 
 import 'react-native-gesture-handler';
 
-import StackNavigator from './navigation/StackNavigator';
-import { AuthProvider } from './AuthContext'
-import { AppProvider } from './components/context/AppContext'
-import { SocketContextProvider } from './components/Chating/SocketContext'
+import StackNavigator from './src/navigation/StackNavigator'
+import { AuthProvider } from './src/Context/AuthContext'
+import { AppProvider } from './src/components/context/AppContext'
+import { SocketContextProvider } from './src/components/Chating/SocketContext'
 
 
 /**
@@ -80,45 +80,10 @@ function App(): React.JSX.Element {
   return (
 
     <AuthProvider>
-      {/* <AppProvider> */}
       <SocketContextProvider>
         <StackNavigator />
       </SocketContextProvider>
-      {/* </AppProvider> */}
     </AuthProvider>
-
-
-
-    // <SafeAreaView style={backgroundStyle}>
-    //   <StatusBar
-    //     barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-    //     backgroundColor={backgroundStyle.backgroundColor}
-    //   />
-    //   <ScrollView
-    //     contentInsetAdjustmentBehavior="automatic"
-    //     style={backgroundStyle}>
-    //     <Header />
-    //     <View
-    //       style={{
-    //         backgroundColor: isDarkMode ? Colors.black : Colors.white,
-    //       }}>
-    //       <Section title="Step One">
-    //         Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-    //         screen and then come back to see your edits.
-    //       </Section>
-    //       <Section title="See Your Changes">
-    //         <ReloadInstructions />
-    //       </Section>
-    //       <Section title="Debug">
-    //         <DebugInstructions />
-    //       </Section>
-    //       <Section title="Learn More">
-    //         Read the docs to discover what to do next:
-    //       </Section>
-    //       <LearnMoreLinks />
-    //     </View>
-    //   </ScrollView>
-    // </SafeAreaView>
   );
 }
 

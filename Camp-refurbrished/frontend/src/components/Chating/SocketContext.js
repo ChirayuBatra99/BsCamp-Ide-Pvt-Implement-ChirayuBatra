@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, {createContext, useContext, useState, useEffect} from 'react';
 import { io } from 'socket.io-client';
 
-import { AuthContext } from '../../AuthContext';
+import { AuthContext } from '../../Context/AuthContext';
 
 const SocketContext = createContext();
 
