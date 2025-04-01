@@ -7,7 +7,6 @@ import PlaceBid from './components/Bids/PlaceBid'
 
 import 'react-native-gesture-handler';
 
-
 import StackNavigator from './navigation/StackNavigator';
 import { AuthProvider } from './AuthContext'
 import { AppProvider } from './components/context/AppContext'
