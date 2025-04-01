@@ -46,7 +46,7 @@ const Grid = () => {
             <View style={styles.datesabove}>
               {timeSlots.map((e, key) => (
                 <View key={key} style={styles.hourLabelsContainer}>
-                  <Text style={styles.monthTextStyle}> {e} Jan</Text>
+                  <Text style={styles.monthTextStyle}>{e} Mar</Text>
                   <View style={styles.line} />
                 </View>
               ))}

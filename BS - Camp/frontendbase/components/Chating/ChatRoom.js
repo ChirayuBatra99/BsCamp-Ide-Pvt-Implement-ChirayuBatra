@@ -72,32 +72,69 @@ const ChatRoom = () => {
         return new Date(time).toLocaleString('en-US', options);
     };
 
+    // const sendMessage = async (senderId, receiverId) => {
+    //     try {
+    //         if(message=='')
+    //             return;
+    //         await axios.post('http://10.0.2.2:8005/sendMessage', {
+    //             senderId,
+    //             receiverId,
+    //             message
+    //         });
+    //         socket.emit('sendMessage', { senderId, receiverId, message });
+    //         // the above line is preventing the action of sending if i click send button
+    //         setMessage('');
+    //         setTimeout(() => {
+    //             fetchMessages();
+    //         }, 100);
+
+
+    //         // Add to friends list as well
+    //         await axios.post("http://10.0.2.2:8005/makefriends", {
+    //              senderId, receiverId
+    //         });
+    //     }
+    //     catch (error) {
+    //         console.log("errorBRO", error);
+    //     }
+    // };
+
     const sendMessage = async (senderId, receiverId) => {
         try {
-            if(message=='')
-                return;
+            if (message === '') return;
+    
+            const newMessage = {
+                senderId,
+                receiverId,
+                message,
+                timeStamp: new Date().toISOString(), // Add local timestamp
+            };
+    
+            // Update the UI immediately
+            setMessages(prevMessages => [...prevMessages, newMessage]);
+    
             await axios.post('http://10.0.2.2:8005/sendMessage', {
                 senderId,
                 receiverId,
                 message
             });
+    
             socket.emit('sendMessage', { senderId, receiverId, message });
-            // the above line is preventing the action of sending if i click send button
+    
             setMessage('');
-            setTimeout(() => {
-                fetchMessages();
-            }, 100);
-
-
+    
+            // Optionally, fetch messages again for consistency
+            fetchMessages();
+    
             // Add to friends list as well
             await axios.post("http://10.0.2.2:8005/makefriends", {
-                 senderId, receiverId
+                senderId, receiverId
             });
-        }
-        catch (error) {
+        } catch (error) {
             console.log("errorBRO", error);
         }
     };
+    
 
     return (
         <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#040303' }}>
