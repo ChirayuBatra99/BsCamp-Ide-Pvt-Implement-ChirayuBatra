@@ -18,7 +18,6 @@ import ShareFl from '../components/ShareFl/ShareFl'
 import Login from '../components/LoginSignup/Login';
 import Signup from '../components/LoginSignup/Signup';
 
-// import People from '../components/PeopleComponent/People';
 import Grid from '../components/Grid/Grid';
 import People from '../components/PeopleComponent/People';
 import PlaceBid from '../components/Bids/PlaceBid';
@@ -38,7 +37,6 @@ const StackNavigator = () => {
     };
     fetchUser();
   }, []);
-
 
   const AuthStack = () => {
     return (
@@ -61,16 +59,11 @@ const StackNavigator = () => {
     return (
       <Drawer.Navigator
       screenOptions={{ 
-        // drawerActiveTintColor: 'yellow',
-        // drawerActiveBackgroundColor: 'blue', 
         drawerStyle: {
           width: '60%',
           backgroundColor: 'black',
-
-        } ,
-        
+        } ,        
       }}
-        // style={styles.drawerWidth}
         initialRouteName='GridScreen'
         drawerContent={props => {
           const { routeNames, index } = props.state;
@@ -90,7 +83,6 @@ const StackNavigator = () => {
                   focused='GridScreen'
                 }}
                 style={{
-                  // backgroundColor: '#9dd3c8',
                   borderColor: 'white',
                   borderWidth: 2,
                   opacity: 1,
@@ -101,7 +93,7 @@ const StackNavigator = () => {
                 inactiveBackgroundColor='black'
                 activeBackgroundColor='white'
                 inactiveTintColor='yellow'
-                activeTintColor='black' // text color
+                activeTintColor='black'
               />
               
               <DrawerItem
@@ -120,13 +112,11 @@ const StackNavigator = () => {
                   justifyContent: 'center'
                 }}
                
-                // focused={focused === SCREENS.PROFILE}
-                // drawerActiveTintColor= {'yellow'},
                 focused={focused==='Placebid'}
                 inactiveBackgroundColor='black'
                 activeBackgroundColor='white'
                 inactiveTintColor='yellow'
-                activeTintColor='black' // text color
+                activeTintColor='black' 
               />
                <DrawerItem
                 label={'Profile'}
@@ -146,16 +136,13 @@ const StackNavigator = () => {
                 inactiveBackgroundColor='black'
                 activeBackgroundColor='white'
                 inactiveTintColor='yellow'
-                activeTintColor='black' // text color
-
+                activeTintColor='black' 
               />
               
-
                <DrawerItem
                 label={'Logout'}
                 onPress={() => {
                   props.navigation.navigate('GridScreen');
-                  // focused='GridScreen'
                   try{
                     AsyncStorage.removeItem('authToken');
                     setToken('');
@@ -167,19 +154,16 @@ const StackNavigator = () => {
                   }
                 }}
                 style={{
-                  // backgroundColor: '#9dd3c8',
                   borderColor: 'white',
                   borderWidth: 2,
                   opacity: 1,
                   width: '100%',
                   marginBottom: 5,
-                  // flex:1,
                 }}
-                // focused={focused==='GridScreen'}
                 inactiveBackgroundColor='black'
                 activeBackgroundColor='white'
                 inactiveTintColor='yellow'
-                activeTintColor='black' // text color
+                activeTintColor='black' 
               />
 
             </DrawerContentScrollView>
@@ -189,11 +173,6 @@ const StackNavigator = () => {
                                                                           
         <Drawer.Screen name="GridScreen" component={ShareFl} options={{title: 'Find Travellers',
           headerRight: () => (
-            // <Button 
-            //   onPress={() => alert('Button Pressed!')} 
-            //   title="Messages" 
-            //   color="blue" 
-            // />
             <AllMessagesButton />
           ),
         }} />
@@ -244,13 +223,13 @@ const StackNavigator = () => {
       <View style={styles.container}>
         <View style={styles.overlayContainer2}>
               <Image
-                    source={require('../svgs/v.png')} // Replace with your image file
+                    source={require('../svgs/v.png')}
                     style={styles.image2}
               />
         </View>
       <View style={styles.overlayContainer}>
                 <Image
-                    source={require('../svgs/texi.png')} // Replace with your image file
+                    source={require('../svgs/texi.png')} 
                     style={styles.image}
                 />
       </View>
@@ -281,8 +260,6 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     backgroundColor: 'white',
 },
 backgroundVideo: {
@@ -293,7 +270,7 @@ backgroundVideo: {
 },
 overlayContainer: {
   position: 'absolute',
-  bottom: 50, // Adjust to position the image correctly
+  bottom: 50,
   alignItems: 'center',
 },
 overlayContainer2: {
@@ -301,13 +278,13 @@ overlayContainer2: {
   top: 110
 },
 image: {
-  width: 400,  // Adjust as needed
-  height: 400, // Adjust as needed
+  width: 400, 
+  height: 400,
   resizeMode: 'contain',
 },
 image2: {
-  width: 300,  // Adjust as needed
-  height: 300, // Adjust as needed
+  width: 300,  
+  height: 300, 
   resizeMode: 'contain',
 },
 });
