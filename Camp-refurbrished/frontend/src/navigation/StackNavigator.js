@@ -118,6 +118,7 @@ const StackNavigator = () => {
                 inactiveTintColor='yellow'
                 activeTintColor='black' 
               />
+
                <DrawerItem
                 label={'Profile'}
                 onPress={() => {

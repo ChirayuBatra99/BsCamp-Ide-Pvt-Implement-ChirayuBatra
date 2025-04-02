@@ -4,7 +4,6 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { Picker } from '@react-native-picker/picker';
 import { AuthContext } from '../../Context/AuthContext';
 
-// import DestinationDropDown from '../ShareFl/Pickers/DestinationDropDown';
 import DestinationPicker from './DestinationPicker';
 import TimeRangeDropDown from './TimeRangeDropDown';
 
@@ -12,11 +11,10 @@ const PlaceBid = () => {
   const [email, setEmail] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
-  const { userId } = useContext(AuthContext);
-
   const [timeRange, setTimeRange] = useState('');
   const [destination, setDestination] = useState('');
-  const baseURL = 'http://10.0.2.2:8005'
+  const { userId } = useContext(AuthContext);
+  const baseURL = 'http://10.0.2.2:8005';
 
   const timeSlots = Array.from({ length: 24 }, (_, i) => `${i}-${i + 1}`); // Generate time ranges: 0-1, 1-2, etc.
 
@@ -28,9 +26,7 @@ const PlaceBid = () => {
   };
 
   const handleSubmit = async () => {
-
-    console.log(timeRange,",");
-    
+    console.log(timeRange, ",");
     const formattedTimeRange = timeRange
       .split('-')
       .map((time) => time.padStart(2, '0'))
@@ -50,7 +46,6 @@ const PlaceBid = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          // email,
           selectedDate: selectedDate.toISOString().split('T')[0],
           timeRange: formattedTimeRange,
           destination,
@@ -73,18 +68,15 @@ const PlaceBid = () => {
     <View style={styles.container}>
       <Text style={styles.heading}>B Page</Text>
 
-      {/* Date Picker */}
       <View style={styles.dateContainer3}>
         <Text style={styles.label}>Select a Day:</Text>
-        {/* <View */}
-         <TouchableOpacity 
-            styles={{marginRight: 30, marginLeft: 20, backgroundColor: 'green'}}
-        onPress={() => setShowDatePicker(true)}>
+        <TouchableOpacity
+          styles={{ marginRight: 30, marginLeft: 20, backgroundColor: 'green' }}
+          onPress={() => setShowDatePicker(true)}>
           <Text style={styles.dateText}>
             {selectedDate.toISOString().split('T')[0]}
           </Text>
-        {/* </View> */}
-                </TouchableOpacity>
+        </TouchableOpacity>
 
       </View>
 
@@ -98,37 +90,17 @@ const PlaceBid = () => {
         />
       )}
 
-      {/* Time Range Picker */}
       <View style={styles.dateContainer1}>
-
         <Text style={styles.label}>Time Range:</Text>
-        <TimeRangeDropDown onTimeChange = {setTimeRange}/>
-        {/* <Picker
-          selectedValue={timeRange}
-          style={styles.picker}
-          onValueChange={(itemValue) => setTimeRange(itemValue)}
-        >
-          <Picker.Item label="Select a time range" value="" />
-          {timeSlots.map((slot) => (
-            <Picker.Item key={slot} label={slot} value={slot} />
-          ))}
-        </Picker> */}
+        <TimeRangeDropDown onTimeChange={setTimeRange} />
       </View>
 
       {/* Destination Input */}
       <View style={styles.dateContainer1}>
         <Text style={styles.label}>Destination:</Text>
-        <DestinationPicker onDestinationChange= {setDestination}/>
-        {/* <TextInput
-        style={styles.input}
-        placeholder="Enter destination"
-        value={destination}
-        onChangeText={(text) => setDestination(text)}
-      /> */}
-
+        <DestinationPicker onDestinationChange={setDestination} />
       </View>
 
-      {/* Submit Button */}
       <View style={styles.buttonContainer}>
         <Button title="Submit Bid" onPress={handleSubmit} color="#007bff" />
       </View>
@@ -141,7 +113,6 @@ const styles = StyleSheet.create({
     padding: '10%',
     backgroundColor: 'black',
     flex: 1,
-    // marginRight: 
   },
   heading: {
     fontSize: 24,
@@ -169,7 +140,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     color: 'white',
     width: '100%',
-    // backgroundColor:  'white'
   },
   buttonContainer: {
     marginTop: 15,
@@ -201,21 +171,3 @@ const styles = StyleSheet.create({
 });
 
 export default PlaceBid;
-
-
-
-{/* {Platform.OS === 'ios' || Platform.OS === 'android' ? (
-        <DateTimePicker
-          value={selectedDate}
-          mode="date"
-          display="default"
-          onChange={handleDateChange}
-        />
-      ) : (
-        <TextInput
-          style={styles.input}
-          placeholder="Enter date"
-          value={selectedDate.toISOString().split('T')[0]}
-          editable={false}
-        />
-      )} */}
